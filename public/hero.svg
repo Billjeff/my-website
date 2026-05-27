@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="50%" style="stop-color:#1a1040"/>
+      <stop offset="100%" style="stop-color:#0d0d2b"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="30%" cy="40%" r="50%">
+      <stop offset="0%" style="stop-color:#5e33ff;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#5e33ff;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="70%" cy="60%" r="40%">
+      <stop offset="0%" style="stop-color:#ddff33;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#ddff33;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#glow1)"/>
+  <rect width="800" height="600" fill="url(#glow2)"/>
+  <!-- SEO dashboard UI elements -->
+  <g opacity="0.4">
+    <rect x="60" y="80" width="280" height="180" rx="12" fill="#1e1e3a" stroke="#5e33ff" stroke-width="1"/>
+    <rect x="80" y="100" width="60" height="8" rx="4" fill="#5e33ff"/>
+    <rect x="80" y="120" width="180" height="6" rx="3" fill="#2e2640"/>
+    <rect x="80" y="135" width="140" height="6" rx="3" fill="#2e2640"/>
+    <rect x="80" y="160" width="240" height="40" rx="6" fill="#5e33ff" opacity="0.3"/>
+    <line x1="80" y1="185" x2="230" y2="185" stroke="#ddff33" stroke-width="3" opacity="0.7"/>
+    <rect x="80" y="200" width="100" height="20" rx="4" fill="#ddff33" opacity="0.3"/>
+    <rect x="200" y="200" width="120" height="20" rx="4" fill="#3f51b5" opacity="0.3"/>
+    
+    <rect x="370" y="80" width="280" height="180" rx="12" fill="#1e1e3a" stroke="#3f51b5" stroke-width="1"/>
+    <rect x="390" y="100" width="120" height="8" rx="4" fill="#3f51b5"/>
+    <rect x="390" y="125" width="240" height="80" rx="8" fill="#2e2640"/>
+    <circle cx="430" cy="165" r="25" fill="#5e33ff" opacity="0.5"/>
+    <rect x="470" y="145" width="80" height="8" rx="4" fill="#5e33ff"/>
+    <rect x="470" y="160" width="120" height="6" rx="3" fill="#2e2640"/>
+    <rect x="470" y="175" width="90" height="6" rx="3" fill="#2e2640"/>
+    
+    <rect x="60" y="300" width="590" height="160" rx="12" fill="#1e1e3a" stroke="#333" stroke-width="1"/>
+    <rect x="90" y="330" width="100" height="8" rx="4" fill="#ddff33" opacity="0.6"/>
+    <rect x="90" y="355" width="530" height="30" rx="6" fill="#5e33ff" opacity="0.15"/>
+    <rect x="90" y="400" width="530" height="30" rx="6" fill="#3f51b5" opacity="0.15"/>
+    
+    <!-- Magnifying glass -->
+    <circle cx="680" cy="120" r="30" fill="none" stroke="#ddff33" stroke-width="3" opacity="0.5"/>
+    <line x1="700" y1="140" x2="720" y2="160" stroke="#ddff33" stroke-width="4" opacity="0.5"/>
+    
+    <!-- Rising graph -->
+    <polyline points="680,320 710,290 740,300 770,260" fill="none" stroke="#ddff33" stroke-width="3" opacity="0.5"/>
+    <circle cx="770" cy="260" r="4" fill="#ddff33" opacity="0.7"/>
+  </g>
+  <!-- Brand text -->
+  <text x="400" y="550" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="rgba(255,255,255,0.2)" letter-spacing="4">RAPID SCOPE MARKETING</text>
+</svg>

@@ -65,7 +65,7 @@ export default function Layout({ children, title = 'Rapid Scope Marketing LLC | 
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2025 Rapid Scope Marketing LLC. All rights reserved.</p>
+            <p>&copy; 2025 Rapid Scope Marketing LLC. All rights reserved. &mdash; v1.0.0</p>
           </div>
         </div>
       </footer>

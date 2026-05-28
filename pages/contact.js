@@ -3,11 +3,29 @@ import { useState } from 'react';
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
+  const [fields, setFields] = useState({ name: '', email: '', phone: '', message: '' });
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => setFields({ ...fields, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted!');
-    setSubmitted(true);
+    setSubmitting(true);
+    setError('');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...fields, source: 'contact-page' }),
+      });
+      if (!res.ok) throw new Error();
+      setSubmitted(true);
+      setFields({ name: '', email: '', phone: '', message: '' });
+    } catch {
+      setError('Something went wrong. Please try again.');
+    }
+    setSubmitting(false);
   };
 
   return (
@@ -58,18 +76,21 @@ export default function Contact() {
                 ) : (
                   <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                      <input type="text" className="form-control" placeholder="Your Name" required />
+                      <input type="text" name="name" className="form-control" placeholder="Your Name" value={fields.name} onChange={handleChange} required />
                     </div>
                     <div className="form-group">
-                      <input type="email" className="form-control" placeholder="Email Address" required />
+                      <input type="email" name="email" className="form-control" placeholder="Email Address" value={fields.email} onChange={handleChange} required />
                     </div>
                     <div className="form-group">
-                      <input type="tel" className="form-control" placeholder="Phone Number" />
+                      <input type="tel" name="phone" className="form-control" placeholder="Phone Number" value={fields.phone} onChange={handleChange} />
                     </div>
                     <div className="form-group">
-                      <textarea className="form-control" placeholder="How can we help you grow?" required></textarea>
+                      <textarea name="message" className="form-control" placeholder="How can we help you grow?" value={fields.message} onChange={handleChange} required></textarea>
                     </div>
-                    <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>Submit Request</button>
+                    {error && <p style={{ color: '#ff6b6b', fontSize: '0.85rem', marginBottom: '1rem' }}>{error}</p>}
+                    <button type="submit" className="btn btn-primary" style={{ width: '100%' }} disabled={submitting}>
+                      {submitting ? 'Sending...' : 'Submit Request'}
+                    </button>
                   </form>
                 )}
               </div>

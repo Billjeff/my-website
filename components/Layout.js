@@ -12,13 +12,17 @@ export default function Layout({ children, title = 'Rapid Scope Marketing LLC | 
         <title>{title}</title>
         <meta name="description" content="Rapid Scope Marketing LLC is a top-rated SEO and Web Design agency in Dubai, UAE. We specialize in driving targeted traffic and accelerating business growth." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/brand/rapid-scope-favicon.png" type="image/png" />
       </Head>
 
       <nav className="navbar">
         <div className="container">
           <Link href="/" className="nav-logo">
-            <Image src="/brand/rapid-scope-logo.svg" alt="Rapid Scope Marketing LLC" width={214} height={47} priority />
+            <Image className="nav-logo__mark" src="/brand/rapid-scope-mark.png" alt="" width={56} height={56} priority />
+            <span className="nav-logo__text" aria-label="Rapid Scope Marketing LLC">
+              <span>Rapid Scope</span>
+              <span>Marketing</span>
+            </span>
           </Link>
 
           {/* Hamburger */}

@@ -231,13 +231,35 @@ p {
   display: inline-flex;
   min-height: 48px;
   align-items: center;
+  gap: 0.7rem;
 }
 
-.nav-logo img {
+.nav-logo__mark {
   display: block;
-  width: min(214px, 48vw);
-  height: auto;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
+}
+
+.nav-logo__text {
+  display: grid;
+  gap: 0.12rem;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.nav-logo__text span:first-child {
+  font-size: 1.02rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+.nav-logo__text span:last-child {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.64rem;
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
 }
 
 .nav-links {
@@ -1517,8 +1539,22 @@ blockquote p {
     padding: 0.65rem 0;
   }
 
-  .nav-logo img {
-    width: min(178px, 56vw);
+  .nav-logo {
+    gap: 0.55rem;
+  }
+
+  .nav-logo__mark {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-logo__text span:first-child {
+    font-size: 0.94rem;
+  }
+
+  .nav-logo__text span:last-child {
+    font-size: 0.56rem;
+    letter-spacing: 0.24em;
   }
 
   .hero-split {

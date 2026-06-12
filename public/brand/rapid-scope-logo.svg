@@ -1,12 +1,11 @@
 <svg width="420" height="92" viewBox="0 0 420 92" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Rapid Scope Marketing</title>
-  <desc id="desc">Rapid Scope Marketing wordmark with a modern scope icon.</desc>
-  <rect width="420" height="92" rx="18" fill="#050505"/>
-  <g transform="translate(24 20)">
-    <path d="M26 0C11.641 0 0 11.641 0 26s11.641 26 26 26 26-11.641 26-26S40.359 0 26 0Zm0 8c9.941 0 18 8.059 18 18s-8.059 18-18 18S8 35.941 8 26 16.059 8 26 8Z" fill="#E6FF2E"/>
-    <path d="M26 14v24M14 26h24" stroke="#050505" stroke-width="5" stroke-linecap="round"/>
-    <path d="M43 43l11 11" stroke="#E6FF2E" stroke-width="7" stroke-linecap="round"/>
+  <desc id="desc">Rapid Scope Marketing transparent wordmark.</desc>
+  <g transform="translate(4 18)">
+    <path d="M28 0C12.536 0 0 12.536 0 28s12.536 28 28 28 28-12.536 28-28S43.464 0 28 0Zm0 8.3c10.88 0 19.7 8.82 19.7 19.7S38.88 47.7 28 47.7 8.3 38.88 8.3 28 17.12 8.3 28 8.3Z" fill="#E6FF2E"/>
+    <path d="M28 14.5v27M14.5 28h27" stroke="#050505" stroke-width="5.6" stroke-linecap="round"/>
+    <path d="M46 46l12 12" stroke="#E6FF2E" stroke-width="7.5" stroke-linecap="round"/>
   </g>
-  <text x="96" y="43" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="800" letter-spacing="-0.6">Rapid Scope</text>
-  <text x="98" y="66" fill="#B8B8B8" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="3.4">MARKETING</text>
+  <text x="82" y="43" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="850" letter-spacing="-0.4">Rapid Scope</text>
+  <text x="84" y="68" fill="#BFC4C8" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800" letter-spacing="4">MARKETING</text>
 </svg>

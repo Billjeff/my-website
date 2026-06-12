@@ -1061,10 +1061,15 @@ blockquote span {
   min-height: 520px;
   padding: clamp(1.5rem, 5vw, 4rem) 0;
   isolation: isolate;
+  perspective: 1200px;
 }
 
 .success-card {
   --card-tilt: rotate(0deg) translateY(0);
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --shine-x: 50%;
+  --shine-y: 50%;
   position: relative;
   z-index: 1;
   min-height: clamp(360px, 36vw, 500px);
@@ -1077,8 +1082,30 @@ blockquote span {
   box-shadow: 0 24px 60px rgba(5, 5, 5, 0.12);
   opacity: 0;
   transform: translateY(64px) rotate(0deg) scale(0.96);
-  animation: successCardIn 760ms var(--ease-out) forwards;
-  transition: transform 260ms var(--ease-out), box-shadow 260ms var(--ease-out);
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  transition:
+    transform 500ms cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 500ms cubic-bezier(0.25, 1, 0.5, 1),
+    filter 500ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.success-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at var(--shine-x) var(--shine-y), rgba(255, 255, 255, 0.32), transparent 11rem);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 420ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.success-card-stack--active .success-card {
+  opacity: 1;
+  transform: var(--card-tilt);
+  animation: successCardIn 820ms cubic-bezier(0.25, 1, 0.5, 1) backwards;
 }
 
 .success-card:nth-child(1) {
@@ -1109,9 +1136,24 @@ blockquote span {
   animation-delay: 380ms;
 }
 
+.success-card-stack:has(.success-card:hover) .success-card:not(:hover) {
+  filter: saturate(0.84) brightness(0.96);
+  transform: var(--card-tilt) translateY(18px) scale(0.96);
+}
+
 .success-card:hover {
-  transform: var(--card-tilt) translateY(-14px);
-  box-shadow: 0 34px 80px rgba(5, 5, 5, 0.18);
+  z-index: 10;
+  transform:
+    var(--card-tilt)
+    translateY(-24px)
+    rotateX(var(--tilt-x))
+    rotateY(var(--tilt-y))
+    scale(1.035);
+  box-shadow: 0 40px 90px rgba(5, 5, 5, 0.22);
+}
+
+.success-card:hover::before {
+  opacity: 1;
 }
 
 .success-card--light {
@@ -1135,16 +1177,22 @@ blockquote span {
 }
 
 .success-card h3 {
+  position: relative;
+  z-index: 1;
   margin: 0;
   color: currentColor;
   font-size: clamp(1.8rem, 3vw, 3rem);
+  transform: translateZ(32px);
 }
 
 .success-card__icon {
+  position: relative;
+  z-index: 1;
   display: grid;
   place-items: center;
   flex: 1;
   min-height: 130px;
+  transform: translateZ(46px);
 }
 
 .success-card__icon svg {
@@ -1155,14 +1203,32 @@ blockquote span {
   stroke-width: 4;
   stroke-linecap: round;
   stroke-linejoin: round;
+  transition: transform 500ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.success-card__icon path {
+  stroke-dasharray: 210;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 700ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.success-card:hover .success-card__icon svg {
+  transform: scale(1.08) rotate(-2deg);
+}
+
+.success-card:hover .success-card__icon path {
+  stroke-dashoffset: 420;
 }
 
 .success-card p {
+  position: relative;
+  z-index: 1;
   max-width: 23rem;
   margin: 0;
   color: currentColor;
   font-size: clamp(1rem, 1.35vw, 1.15rem);
   line-height: 1.42;
+  transform: translateZ(26px);
 }
 
 .success-card--light p {
@@ -1170,9 +1236,9 @@ blockquote span {
 }
 
 @keyframes successCardIn {
-  to {
-    opacity: 1;
-    transform: var(--card-tilt);
+  from {
+    opacity: 0;
+    transform: translateY(64px) rotate(0deg) scale(0.96);
   }
 }
 

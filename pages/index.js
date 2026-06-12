@@ -1,6 +1,6 @@
 import Layout from '@/components/Layout';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const services = [
   {
@@ -165,9 +165,48 @@ function SuccessIcon({ type }) {
   );
 }
 
+function handleSuccessCardMove(event) {
+  const card = event.currentTarget;
+  const rect = card.getBoundingClientRect();
+  const x = (event.clientX - rect.left) / rect.width - 0.5;
+  const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+  card.style.setProperty('--tilt-x', `${(-y * 8).toFixed(2)}deg`);
+  card.style.setProperty('--tilt-y', `${(x * 10).toFixed(2)}deg`);
+  card.style.setProperty('--shine-x', `${((x + 0.5) * 100).toFixed(1)}%`);
+  card.style.setProperty('--shine-y', `${((y + 0.5) * 100).toFixed(1)}%`);
+}
+
+function handleSuccessCardLeave(event) {
+  const card = event.currentTarget;
+
+  card.style.setProperty('--tilt-x', '0deg');
+  card.style.setProperty('--tilt-y', '0deg');
+  card.style.setProperty('--shine-x', '50%');
+  card.style.setProperty('--shine-y', '50%');
+}
+
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(0);
   const auditForm = useAuditForm();
+
+  useEffect(() => {
+    const stack = document.querySelector('.success-card-stack');
+    if (!stack) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          stack.classList.add('success-card-stack--active');
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.28 }
+    );
+
+    observer.observe(stack);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <Layout title="Rapid Scope Marketing LLC | SEO & Web Design Agency in Dubai">
@@ -329,7 +368,12 @@ export default function Home() {
 
           <div className="success-card-stack" aria-label="Rapid Scope success workflow">
             {successCards.map((card) => (
-              <article className={`success-card success-card--${card.tone}`} key={card.title}>
+              <article
+                className={`success-card success-card--${card.tone}`}
+                key={card.title}
+                onPointerLeave={handleSuccessCardLeave}
+                onPointerMove={handleSuccessCardMove}
+              >
                 <h3>{card.title}</h3>
                 <div className="success-card__icon">
                   <SuccessIcon type={card.icon} />

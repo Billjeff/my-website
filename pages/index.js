@@ -47,6 +47,33 @@ const process = [
   },
 ];
 
+const successCards = [
+  {
+    title: 'Discover',
+    tone: 'light',
+    icon: 'grid',
+    desc: 'We map search demand, buyer intent, technical gaps, and competitor signals so the next move is based on evidence, not guesswork.',
+  },
+  {
+    title: 'Shape',
+    tone: 'acid',
+    icon: 'pen',
+    desc: 'We turn the findings into stronger pages, clearer offers, useful content, and journeys that make it easier for qualified visitors to act.',
+  },
+  {
+    title: 'Launch',
+    tone: 'ink',
+    icon: 'check',
+    desc: 'We ship focused improvements across SEO, web design, content structure, speed, schema, and local visibility with clean priorities.',
+  },
+  {
+    title: 'Compound',
+    tone: 'light',
+    icon: 'chart',
+    desc: 'We keep refining what the data proves: better rankings, stronger trust signals, cleaner conversion paths, and more valuable leads.',
+  },
+];
+
 const faqs = [
   {
     q: 'How quickly can SEO start producing results?',
@@ -100,6 +127,42 @@ function useAuditForm() {
   };
 
   return { error, fields, handleChange, handleSubmit, submitted, submitting };
+}
+
+function SuccessIcon({ type }) {
+  if (type === 'pen') {
+    return (
+      <svg viewBox="0 0 80 80" aria-hidden="true">
+        <path d="M18 58l6-20 28-28c4-4 10-4 14 0s4 10 0 14L38 52 18 58z" />
+        <path d="M48 14l18 18" />
+      </svg>
+    );
+  }
+
+  if (type === 'check') {
+    return (
+      <svg viewBox="0 0 80 80" aria-hidden="true">
+        <path d="M18 28v34h44V36" />
+        <path d="M27 38l14 14 28-30" />
+      </svg>
+    );
+  }
+
+  if (type === 'chart') {
+    return (
+      <svg viewBox="0 0 80 80" aria-hidden="true">
+        <path d="M12 52l18-16 14 12 24-24" />
+        <path d="M18 62v-9M34 62V42M50 62V48M66 62V30" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 80 80" aria-hidden="true">
+      <path d="M18 18h18v18H18zM44 18h18v18H44zM18 44h18v18H18zM44 44h18v18H44z" />
+      <path d="M18 36l18-3M36 44l8-8" />
+    </svg>
+  );
 }
 
 export default function Home() {
@@ -255,23 +318,25 @@ export default function Home() {
       </section>
 
       <section className="section results-section">
-        <div className="container results-section__grid">
-          <div className="results-metric">
-            <span>Built for</span>
-            <strong>Search demand, buyer trust, and lead quality</strong>
-          </div>
-          <div>
+        <div className="container">
+          <div className="results-section__intro">
             <p className="section-kicker">What success looks like</p>
             <h2>More than rankings. A better route to revenue.</h2>
             <p>
               The goal is not to make a prettier brochure. The goal is a faster, clearer, more authoritative website that helps the right customers find you, understand your value, and take action.
             </p>
-            <div className="outcome-list">
-              <span>Higher-quality organic traffic</span>
-              <span>Cleaner technical performance</span>
-              <span>Stronger local search visibility</span>
-              <span>More persuasive service pages</span>
-            </div>
+          </div>
+
+          <div className="success-card-stack" aria-label="Rapid Scope success workflow">
+            {successCards.map((card) => (
+              <article className={`success-card success-card--${card.tone}`} key={card.title}>
+                <h3>{card.title}</h3>
+                <div className="success-card__icon">
+                  <SuccessIcon type={card.icon} />
+                </div>
+                <p>{card.desc}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

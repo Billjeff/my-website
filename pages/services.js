@@ -1,78 +1,88 @@
 import Layout from '@/components/Layout';
 import Link from 'next/link';
 
+const services = [
+  {
+    title: 'Website Audit',
+    href: '/website-audit',
+    desc: 'Technical, content, UX, speed, and indexation checks that show exactly what is blocking organic growth.',
+  },
+  {
+    title: 'Monthly SEO',
+    href: '/monthly-seo',
+    desc: 'Ongoing technical fixes, content planning, reporting, and authority work designed to compound visibility.',
+  },
+  {
+    title: 'Topical Maps',
+    href: '/topical-map',
+    desc: 'Semantic content architecture that builds topical authority and helps search engines understand your expertise.',
+  },
+  {
+    title: 'SEO Consultation',
+    href: '/seo-consultation',
+    desc: 'Focused strategy sessions for businesses that need clarity before investing in a full campaign.',
+  },
+  {
+    title: 'Cloud Link Stacking',
+    href: '/cloud-link-stacking',
+    desc: 'Authority architecture for campaigns that need stronger supporting digital assets and link signals.',
+  },
+  {
+    title: 'Web Design',
+    href: '/web-design',
+    desc: 'Fast, conversion-focused websites built around search visibility, buyer journeys, and performance.',
+  },
+];
+
 export default function Services() {
   return (
-    <Layout title="Our Services | SEO & Web Design Dubai">
-      <div style={{ paddingTop: '120px' }}>
-        <section className="section">
-          <div className="container animate-fade-in">
-            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-              <h6 style={{ color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '0.2em' }}>What We Do</h6>
-              <h2>Bespoke <span className="text-gradient">Digital Solutions</span></h2>
-              <p style={{ maxWidth: '600px', margin: '1rem auto 0', color: 'rgba(255,255,255,0.7)' }}>
-                We work with you to plan and deploy campaigns that meet, if not exceed, your goals. From Custom Web Development to Organic SEO Campaigns, we work tirelessly to deliver results.
-              </p>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '2rem' }}>
-              <div className="card" style={{ animationDelay: '0s' }}>
-                <h3 style={{ fontSize: '1.3rem', color: 'var(--text-light)' }}>High DA Cloud Link Stacking</h3>
-                <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '1.5rem' }}>
-                  Our 'Secret Sauce' strategy. Harness the power of high-authority cloud platforms to build robust, scalable backlinks and skyrocket your SERP rankings.
-                </p>
-                <Link href="/cloud-link-stacking" style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}>Learn More →</Link>
-              </div>
-
-              <div className="card" style={{ animationDelay: '0.1s' }}>
-                <h3 style={{ fontSize: '1.3rem', color: 'var(--text-light)' }}>Website Audit Service</h3>
-                <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '1.5rem' }}>
-                  Comprehensive technical and on-page audits to ensure your website meets all search engine requirements for maximum visibility and performance.
-                </p>
-                <Link href="/website-audit" style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}>Learn More →</Link>
-              </div>
-
-              <div className="card" style={{ animationDelay: '0.2s' }}>
-                <h3 style={{ fontSize: '1.3rem', color: 'var(--text-light)' }}>Topical Map Service</h3>
-                <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '1.5rem' }}>
-                  Advanced Semantic SEO strategies. We map out topical authority structures to position your site as an industry leader in Google's eyes.
-                </p>
-                <Link href="/topical-map" style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}>Learn More →</Link>
-              </div>
-
-              <div className="card" style={{ animationDelay: '0.3s' }}>
-                <h3 style={{ fontSize: '1.3rem', color: 'var(--text-light)' }}>Monthly SEO Service</h3>
-                <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '1.5rem' }}>
-                  Ongoing, data-driven SEO campaigns designed to consistently build authority, drive targeted traffic, and maximize ROI month over month.
-                </p>
-                <Link href="/monthly-seo" style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}>Learn More →</Link>
-              </div>
-
-              <div className="card" style={{ animationDelay: '0.4s' }}>
-                <h3 style={{ fontSize: '1.3rem', color: 'var(--text-light)' }}>SEO Expert Consultation</h3>
-                <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '1.5rem' }}>
-                  Direct access to top-tier SEO experts in Dubai that get results. We craft bespoke strategies tailored precisely for your business goals.
-                </p>
-                <Link href="/seo-consultation" style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}>Learn More →</Link>
-              </div>
-
-              <div className="card" style={{ animationDelay: '0.5s' }}>
-                <h3 style={{ fontSize: '1.3rem', color: 'var(--text-light)' }}>Web Design & Development</h3>
-                <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '1.5rem' }}>
-                  Scalable Node.js, React, and Next.js development delivering high-performance, conversion-optimized websites that perfectly complement our SEO strategies.
-                </p>
-                <Link href="/web-design" style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}>Learn More →</Link>
-              </div>
-            </div>
-
-            <div style={{ textAlign: 'center', marginTop: '4rem' }}>
-              <Link href="/contact" className="btn btn-primary">
-                Get a Custom Quote
-              </Link>
-            </div>
+    <Layout title="SEO & Web Design Services Dubai | Rapid Scope Marketing">
+      <section className="page-hero">
+        <div className="container page-hero__grid">
+          <div>
+            <p className="hero-eyebrow">Services</p>
+            <h1>SEO and web design services built as one growth engine.</h1>
           </div>
-        </section>
-      </div>
+          <div className="page-hero__copy">
+            <p>
+              Choose a focused service or combine audit, technical SEO, content strategy, and web design into a complete search experience.
+            </p>
+            <Link href="/contact" className="btn btn-primary">Get a Custom Quote</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section home-services">
+        <div className="container">
+          <div className="service-index">
+            {services.map((service, index) => (
+              <Link href={service.href} className="service-index__row" key={service.title}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <h2>{service.title}</h2>
+                <p>{service.desc}</p>
+                <strong>View service</strong>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container editorial-grid">
+          <div>
+            <p className="section-kicker">How we prioritize</p>
+            <h2>Fix the foundation, then scale what works.</h2>
+          </div>
+          <div className="copy-stack">
+            <p>
+              Most websites do not need more random activity. They need a clear order of operations: remove technical blockers, strengthen high-intent pages, build topical coverage, and improve conversion paths.
+            </p>
+            <p>
+              Rapid Scope keeps the work commercially grounded, so every sprint is tied to visibility, qualified traffic, and the actions users should take next.
+            </p>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 }

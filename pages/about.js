@@ -1,44 +1,83 @@
 import Layout from '@/components/Layout';
+import Link from 'next/link';
+
+const principles = [
+  {
+    title: 'Technical truth first',
+    desc: 'We start with crawlability, performance, structure, and data before prescribing content or authority work.',
+  },
+  {
+    title: 'Useful content wins',
+    desc: 'Every page should answer a buyer question, support a decision, or move a prospect closer to action.',
+  },
+  {
+    title: 'Transparent execution',
+    desc: 'You see what is being fixed, why it matters, and how it connects to organic visibility and lead quality.',
+  },
+];
 
 export default function About() {
   return (
-    <Layout title="About Us | Rapid Scope Marketing LLC">
-      <div style={{ paddingTop: '120px' }}>
-        <section className="section">
-          <div className="container animate-fade-in">
-            <h6 style={{ color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '0.2em' }}>Who We Are</h6>
-            <h1 style={{ marginBottom: '2rem' }}>The Rapid Scope <span className="text-gradient">Advantage</span></h1>
-            
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
-              <div>
-                <p style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: 'rgba(255,255,255,0.8)' }}>
-                  At Rapid Scope Marketing LLC, we recognize that true digital authority requires more than algorithmic guesswork. It demands a sophisticated fusion of technical mastery, compelling content, and strategic foresight.
-                </p>
-                <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.6)' }}>
-                  As your dedicated growth partners in Dubai, we dissect the intricacies of search behaviors to position your brand precisely where and how your ideal customer searches for you. With over 12 years of unwavering expertise, we are your go-to source for top-tier web design and digital marketing services in the UAE.
-                </p>
-              </div>
-              <div style={{ backgroundColor: 'var(--bg-card)', padding: '3rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                <h3 style={{ color: 'var(--accent-color)', marginBottom: '1.5rem' }}>Our Core Values</h3>
-                <ul style={{ listStyle: 'none', padding: 0 }}>
-                  <li style={{ marginBottom: '1rem', paddingLeft: '1.5rem', position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 0, color: 'var(--primary-color)' }}>✓</span>
-                    <strong>Transparency:</strong> Clear reporting and honest strategies.
-                  </li>
-                  <li style={{ marginBottom: '1rem', paddingLeft: '1.5rem', position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 0, color: 'var(--primary-color)' }}>✓</span>
-                    <strong>Innovation:</strong> Leveraging AI and Node.js for scalability.
-                  </li>
-                  <li style={{ marginBottom: '1rem', paddingLeft: '1.5rem', position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 0, color: 'var(--primary-color)' }}>✓</span>
-                    <strong>Results-Driven:</strong> Focus on metrics that redefine success.
-                  </li>
-                </ul>
-              </div>
-            </div>
+    <Layout title="About Rapid Scope Marketing LLC | Dubai SEO Agency">
+      <section className="page-hero">
+        <div className="container page-hero__grid">
+          <div>
+            <p className="hero-eyebrow">About Rapid Scope</p>
+            <h1>The search partner for brands that want sharper growth.</h1>
           </div>
-        </section>
-      </div>
+          <div className="page-hero__copy">
+            <p>
+              Rapid Scope Marketing LLC helps ambitious UAE businesses improve search visibility, technical performance, and website conversions with practical, evidence-led digital marketing.
+            </p>
+            <Link href="/contact" className="btn btn-primary">Talk to Rapid Scope</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container editorial-grid">
+          <div>
+            <p className="section-kicker">Our point of view</p>
+            <h2>Modern SEO is a full website system.</h2>
+          </div>
+          <div className="copy-stack">
+            <p>
+              Search has moved beyond isolated keyword tactics. Strong organic growth now depends on technical access, content depth, authority signals, local relevance, and a page experience that makes the next step obvious.
+            </p>
+            <p>
+              We bring these parts together for businesses in Dubai and the wider UAE: clear audits, focused implementation, conversion-led web design, and transparent reporting.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section home-services">
+        <div className="container">
+          <div className="section-heading">
+            <p className="section-kicker">What guides the work</p>
+            <h2>Principles that keep campaigns useful.</h2>
+          </div>
+          <div className="three-card-grid">
+            {principles.map((principle, index) => (
+              <article className="light-card" key={principle.title}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <h3>{principle.title}</h3>
+                <p>{principle.desc}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="cta-banner">
+        <div className="container cta-split">
+          <div>
+            <p className="section-kicker">Ready for clarity?</p>
+            <h2>Start with a focused audit.</h2>
+          </div>
+          <Link href="/website-audit" className="btn btn-primary">See Audit Service</Link>
+        </div>
+      </section>
     </Layout>
   );
 }

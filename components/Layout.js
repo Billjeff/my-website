@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -17,7 +18,7 @@ export default function Layout({ children, title = 'Rapid Scope Marketing LLC | 
       <nav className="navbar">
         <div className="container">
           <Link href="/" className="nav-logo">
-            <img src="https://rapidscopemarketing.com/wp-content/uploads/2026/03/RapidScopeLogoTrans.png" alt="Rapid Scope Marketing LLC" />
+            <Image src="/brand/rapid-scope-logo.svg" alt="Rapid Scope Marketing LLC" width={214} height={47} priority />
           </Link>
 
           {/* Hamburger */}
@@ -34,6 +35,8 @@ export default function Layout({ children, title = 'Rapid Scope Marketing LLC | 
             <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
             <Link href="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
             <Link href="/services" onClick={() => setMenuOpen(false)}>Services</Link>
+            <Link href="/website-audit" onClick={() => setMenuOpen(false)}>Audit</Link>
+            <Link href="/web-design" onClick={() => setMenuOpen(false)}>Web Design</Link>
             <Link href="/contact" className="btn btn-primary" onClick={() => setMenuOpen(false)}>Get a Quote</Link>
           </div>
         </div>
@@ -59,9 +62,9 @@ export default function Layout({ children, title = 'Rapid Scope Marketing LLC | 
             </div>
             <div>
               <h3>Contact</h3>
-              <p>📍 Building #8, Ground floor, DMC<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dubai Internet City, UAE</p>
-              <p>📞 <a href="tel:+971566456855" style={{color:'inherit'}}>+971 566456855</a></p>
-              <p>✉️ <a href="mailto:bilal@rapidscopemarketing.com" style={{color:'inherit'}}>bilal@rapidscopemarketing.com</a></p>
+              <p><strong>Office:</strong> Building #8, Ground floor, DMC<br />Dubai Internet City, UAE</p>
+              <p><strong>Phone:</strong> <a href="tel:+971566456855" style={{ color: 'inherit' }}>+971 566456855</a></p>
+              <p><strong>Email:</strong> <a href="mailto:bilal@rapidscopemarketing.com" style={{ color: 'inherit' }}>bilal@rapidscopemarketing.com</a></p>
             </div>
           </div>
           <div className="footer-bottom">

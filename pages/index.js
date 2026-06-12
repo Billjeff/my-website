@@ -2,203 +2,308 @@ import Layout from '@/components/Layout';
 import Link from 'next/link';
 import { useState } from 'react';
 
-const faqData = [
+const services = [
   {
-    q: 'How long does it take to see SEO results in Dubai?',
-    a: 'While technical fixes can show immediate improvements, sustainable organic growth typically takes 3 to 6 months depending on your starting baseline and industry competition.'
+    label: '01',
+    title: 'Technical SEO',
+    href: '/website-audit',
+    desc: 'Site architecture, crawlability, rendering, indexation, schema, speed, and Core Web Vitals fixes that remove hidden ranking friction.',
   },
   {
-    q: 'How does AI impact my current SEO rankings?',
-    a: 'Search engines like Google are rolling out AI Overviews. If your content isn\'t structured for Generative Engine Optimization (GEO), AI will pull answers from your competitors instead of you.'
+    label: '02',
+    title: 'Monthly SEO Growth',
+    href: '/monthly-seo',
+    desc: 'Compounding campaigns across content, links, reporting, and technical improvements so organic growth does not stall after launch.',
   },
   {
-    q: 'Do you guarantee #1 rankings?',
-    a: 'Any agency guaranteeing a #1 spot is lying to you. We guarantee technical excellence, data-driven growth, and relentless execution that historically puts our clients at the top of their markets.'
-  }
+    label: '03',
+    title: 'Topical Authority',
+    href: '/topical-map',
+    desc: 'Entity-led topical maps and content clusters designed to make your website the most complete answer in your market.',
+  },
+  {
+    label: '04',
+    title: 'Web Design',
+    href: '/web-design',
+    desc: 'Fast, conversion-focused websites built with modern UX patterns and SEO-ready technical foundations from day one.',
+  },
 ];
 
-const serviceCards = [
-  { icon: '{ }', title: 'Technical & JavaScript SEO', desc: 'We fix crawl budgets, eliminate rendering issues, and ensure lightning-fast page speeds so search engines can easily index your site.' },
-  { icon: '📍', title: 'Local SEO & Maps Optimization', desc: 'Dominate "near me" searches in Dubai. We optimize your local profiles and build targeted citations to drive foot traffic and high-intent local leads.' },
-  { icon: '📄', title: 'Content & On-Page Optimization', desc: 'We build advanced topic clusters and deploy schema markup to ensure your content perfectly answers user intent and feeds AI overviews.' },
-  { icon: '🔗', title: 'Digital PR & Authority Building', desc: 'We earn high-quality, editorial backlinks from trusted regional publications to establish unmatched domain authority.' },
-  { icon: '🛒', title: 'E-Commerce & Enterprise SEO', desc: 'Scalable, high-impact strategies for large Shopify, Magento, or WooCommerce stores designed to drive product-level traffic.' }
+const process = [
+  {
+    step: 'Scope',
+    title: 'Find the growth constraints',
+    desc: 'We audit technical health, search demand, competitor coverage, local intent, and conversion paths before recommending work.',
+  },
+  {
+    step: 'Build',
+    title: 'Create the search engine',
+    desc: 'We improve page structure, content depth, internal links, schema, authority signals, and landing page UX in focused sprints.',
+  },
+  {
+    step: 'Compound',
+    title: 'Turn insights into momentum',
+    desc: 'You get clear reporting, next actions, and ongoing optimization that connects SEO activity to leads and revenue.',
+  },
 ];
 
-function useForm(service) {
+const faqs = [
+  {
+    q: 'How quickly can SEO start producing results?',
+    a: 'Technical fixes can improve visibility quickly, while durable organic growth usually compounds over 3 to 6 months depending on competition, site history, and execution pace.',
+  },
+  {
+    q: 'Do you only work with Dubai businesses?',
+    a: 'Dubai and UAE businesses are the core focus, but the same technical SEO, content, and authority systems can support regional or international campaigns.',
+  },
+  {
+    q: 'Can you redesign a website and handle SEO together?',
+    a: 'Yes. That is often the strongest path because UX, technical performance, content architecture, and conversion design can be planned as one system.',
+  },
+];
+
+function useAuditForm() {
   const [fields, setFields] = useState({ name: '', email: '', company: '', website: '' });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
 
-  const handleChange = (e) => setFields({ ...fields, [e.target.name]: e.target.value });
+  const handleChange = (event) => {
+    setFields({ ...fields, [event.target.name]: event.target.value });
+  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setSubmitting(true);
     setError('');
+
     try {
-      const res = await fetch('/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...fields, service, source: 'homepage' }),
+        body: JSON.stringify({
+          ...fields,
+          service: 'Free SEO and website audit',
+          source: 'homepage-redesign',
+        }),
       });
-      if (!res.ok) throw new Error();
+
+      if (!response.ok) throw new Error('Request failed');
+
       setSubmitted(true);
       setFields({ name: '', email: '', company: '', website: '' });
     } catch {
-      setError('Something went wrong. Please try again.');
+      setError('Something went wrong. Please try again or email bilal@rapidscopemarketing.com.');
     }
+
     setSubmitting(false);
   };
 
-  return { fields, handleChange, handleSubmit, submitting, submitted, error };
+  return { error, fields, handleChange, handleSubmit, submitted, submitting };
 }
 
 export default function Home() {
-  const [openFaq, setOpenFaq] = useState(null);
-  const form = useForm('AI-Driven SEO Strategy');
+  const [openFaq, setOpenFaq] = useState(0);
+  const auditForm = useAuditForm();
 
   return (
-    <Layout title="Rapid Scope Marketing LLC | AI-Driven SEO Agency in Dubai">
-      {/* ── HERO ── */}
-      <section className="hero-split">
-        <div className="hero-split__text animate-fade-in">
-          <span className="hero-eyebrow">AI-Driven SEO for Dubai</span>
+    <Layout title="Rapid Scope Marketing LLC | SEO & Web Design Agency in Dubai">
+      <section className="home-hero">
+        <div className="home-hero__content">
+          <p className="hero-eyebrow">SEO, GEO and web design for ambitious UAE brands</p>
           <h1>
-            Dominate Search in Dubai with{' '}
-            <span className="text-gradient">AI-Driven SEO Strategies.</span>
+            Build a website that gets found, trusted, and chosen.
           </h1>
           <p>
-            Traditional SEO is dead. Stop fighting for outdated keywords and start dominating the modern search landscape. Rapid Scope Marketing uses technical precision and Generative Engine Optimization (GEO) to make your brand the only answer Google and AI engines care about.
+            Rapid Scope Marketing helps Dubai businesses turn search visibility into qualified leads with technical SEO, content strategy, authority building, and high-performance web design.
           </p>
           <div className="hero-ctas">
-            <Link href="/contact" className="btn btn-primary">Claim Your Free SEO & Technical Audit</Link>
-            <Link href="/services" className="btn btn-ghost">Our Services →</Link>
-          </div>
-          <div className="hero-trust">
-            <span>✔ Data-driven results</span>
-            <span>✔ Enterprise-grade execution</span>
-            <span>✔ No long-term contracts</span>
+            <Link href="/contact" className="btn btn-primary">Claim Your Free Audit</Link>
+            <Link href="/services" className="btn btn-ghost">Explore Services</Link>
           </div>
         </div>
-        <div className="hero-split__image">
-          <div className="hero-img-glow" />
-          <img src="/hero.svg" alt="Rapid Scope Marketing – AI SEO Dubai" className="hero-img" />
+
+        <aside className="home-hero__panel" aria-label="Rapid Scope performance highlights">
+          <div className="signal-card signal-card--primary">
+            <span>Search visibility</span>
+            <strong>Technical SEO + GEO</strong>
+          </div>
+          <div className="signal-card">
+            <span>Primary market</span>
+            <strong>Dubai and UAE</strong>
+          </div>
+          <div className="signal-grid">
+            <div>
+              <strong>12+</strong>
+              <span>years of digital experience</span>
+            </div>
+            <div>
+              <strong>24h</strong>
+              <span>audit response window</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section className="proof-strip" aria-label="Rapid Scope positioning">
+        <div className="proof-strip__item">
+          <span>01</span>
+          <strong>Technical precision</strong>
+        </div>
+        <div className="proof-strip__item">
+          <span>02</span>
+          <strong>AI-search ready content</strong>
+        </div>
+        <div className="proof-strip__item">
+          <span>03</span>
+          <strong>Conversion-led websites</strong>
+        </div>
+        <div className="proof-strip__item">
+          <span>04</span>
+          <strong>Transparent reporting</strong>
         </div>
       </section>
 
-      {/* ── PROBLEM: Why Traditional SEO is Dead ── */}
-      <section className="section">
+      <section className="section home-intro">
+        <div className="container home-intro__grid">
+          <div>
+            <p className="section-kicker">Why Rapid Scope</p>
+            <h2>Search has changed. Your website has to work harder.</h2>
+          </div>
+          <div className="home-intro__copy">
+            <p>
+              Google is no longer just ranking pages. It is interpreting entities, passages, experience signals, and answer quality. That means your website needs more than keywords. It needs technical clarity, useful content, trust signals, and a path that makes buyers act.
+            </p>
+            <p>
+              We combine SEO strategy and modern web design so your site can perform across organic search, AI Overviews, local discovery, and conversion-focused landing pages.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section home-services">
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2>Why Traditional SEO is <span className="text-gradient">Dead</span> (And What We Do Instead)</h2>
-            <p style={{ maxWidth: '700px', margin: '1rem auto 0', color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>
-              Search engines are no longer just delivering blue links; they are generating answers using AI. If your current agency is just stuffing keywords and buying cheap backlinks, your Dubai business is about to disappear from the search results.
+          <div className="section-heading">
+            <p className="section-kicker">Core services</p>
+            <h2>Everything your growth engine needs.</h2>
+          </div>
+
+          <div className="service-showcase">
+            {services.map((service) => (
+              <Link href={service.href} className="service-showcase__card" key={service.title}>
+                <span>{service.label}</span>
+                <h3>{service.title}</h3>
+                <p>{service.desc}</p>
+                <strong>Learn more</strong>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section audit-section">
+        <div className="container audit-section__grid">
+          <div>
+            <p className="section-kicker">The audit-first approach</p>
+            <h2>We do not guess. We scope the opportunity first.</h2>
+            <p>
+              Your first audit looks at the technical foundation, market opportunity, content gaps, local visibility, and lead journey. You get a practical roadmap before committing to a bigger campaign.
+            </p>
+            <Link href="/website-audit" className="btn btn-ghost">See Website Audit Service</Link>
+          </div>
+
+          <div className="audit-list">
+            <div>
+              <span>Audit</span>
+              <strong>Crawl, indexation, performance, schema, and UX barriers.</strong>
+            </div>
+            <div>
+              <span>Market</span>
+              <strong>Competitor gaps, search intent, local demand, and content opportunities.</strong>
+            </div>
+            <div>
+              <span>Roadmap</span>
+              <strong>Prioritized fixes and campaigns based on impact, effort, and revenue potential.</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section process-section">
+        <div className="container">
+          <div className="section-heading section-heading--split">
+            <div>
+              <p className="section-kicker">How it works</p>
+              <h2>A focused system for organic growth.</h2>
+            </div>
+            <p>
+              The process is intentionally simple: understand what is blocking growth, build the missing pieces, then keep improving what the data proves is working.
             </p>
           </div>
 
-          <div className="compare-table">
-            <div className="compare-col compare-col--bad">
-              <h3>Traditional SEO (The Old Way)</h3>
-              <ul>
-                <li>Keyword stuffing and unnatural text</li>
-                <li>Chasing vanity metrics and impressions</li>
-                <li>Spammy, low-quality backlinks</li>
-                <li>Guesswork and outdated tactics</li>
-              </ul>
-            </div>
-            <div className="compare-col compare-col--good">
-              <h3>RapidScope AI-Driven SEO (The Future)</h3>
-              <ul>
-                <li>Entity-based SEO and topic clusters</li>
-                <li>Optimizing for Answer Engines (AEO/GEO)</li>
-                <li>High-authority Digital PR and brand mentions</li>
-                <li>Data-backed technical architecture</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SERVICES BREAKDOWN ── */}
-      <section className="section" style={{ backgroundColor: 'var(--bg-card)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <span className="hero-eyebrow">Our Arsenal</span>
-            <h2>Comprehensive SEO Services <span className="text-gradient">Tailored for UAE</span></h2>
-          </div>
-          <div className="services-grid">
-            {serviceCards.map((card, i) => (
-              <div key={i} className="card">
-                <div className="card-icon">{card.icon}</div>
-                <h3>{card.title}</h3>
-                <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: '1.8' }}>{card.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── PROCESS ── */}
-      <section className="section">
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2>The RapidScope SEO <span className="text-gradient">Blueprint</span></h2>
-            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Predictable, Transparent Growth</p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>
-            {[
-              { step: '1', title: 'Deep Technical Audit', desc: 'We uncover hidden roadblocks and toxic errors tanking your current rankings.' },
-              { step: '2', title: 'Competitive Gap Analysis', desc: 'We reverse-engineer your top Dubai competitors to find exactly where they are vulnerable.' },
-              { step: '3', title: 'Strategy Implementation', desc: 'Our in-house experts deploy targeted content, technical fixes, and local PR campaigns.' },
-              { step: '4', title: 'Live Analytics Dashboard', desc: 'No vanity metrics. You get 24/7 access to see keyword movement, traffic, and lead conversions.' }
-            ].map((s, i) => (
-              <div key={i} className="card" style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--primary-color)', marginBottom: '0.5rem' }}>{s.step}</div>
-                <h4 style={{ color: 'var(--accent-color)', marginBottom: '0.5rem' }}>{s.title}</h4>
-                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem' }}>{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── WHY CHOOSE US ── */}
-      <section className="section" style={{ backgroundColor: 'var(--bg-card)' }}>
-        <div className="container">
-          <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            Why Dubai's Leading Brands <span className="text-gradient">Trust RapidScope</span>
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
-            {[
-              { icon: '✅', title: 'Strictly White-Hat', desc: 'We build sustainable growth. No black-hat shortcuts that risk Google penalties.' },
-              { icon: '🌍', title: 'Local UAE Expertise', desc: 'We understand local search intent, regional competitors, and market nuances.' },
-              { icon: '👨‍💻', title: 'In-House Experts', desc: 'No outsourcing. You work directly with our dedicated technical team.' },
-              { icon: '💰', title: 'Transparent Pricing', desc: 'Clear deliverables, strict timelines, and absolutely no hidden fees.' }
-            ].map((item, i) => (
-              <div key={i} className="card">
-                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{item.icon}</div>
+          <div className="process-grid">
+            {process.map((item, index) => (
+              <article className="process-card" key={item.step}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <p>{item.step}</p>
                 <h3>{item.title}</h3>
-                <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: '1.8' }}>{item.desc}</p>
-              </div>
+                <p>{item.desc}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── FAQ ── */}
-      <section className="section">
-        <div className="container" style={{ maxWidth: '800px' }}>
-          <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            Frequently Asked <span className="text-gradient">Questions</span>
-          </h2>
+      <section className="section results-section">
+        <div className="container results-section__grid">
+          <div className="results-metric">
+            <span>Built for</span>
+            <strong>Search demand, buyer trust, and lead quality</strong>
+          </div>
+          <div>
+            <p className="section-kicker">What success looks like</p>
+            <h2>More than rankings. A better route to revenue.</h2>
+            <p>
+              The goal is not to make a prettier brochure. The goal is a faster, clearer, more authoritative website that helps the right customers find you, understand your value, and take action.
+            </p>
+            <div className="outcome-list">
+              <span>Higher-quality organic traffic</span>
+              <span>Cleaner technical performance</span>
+              <span>Stronger local search visibility</span>
+              <span>More persuasive service pages</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section quote-section">
+        <div className="container">
+          <blockquote>
+            <span>Rapid Scope principle</span>
+            <p>
+              &ldquo;The strongest SEO strategy is not a list of tasks. It is a complete search experience: technical access, useful answers, trust signals, and a page that makes the next step obvious.&rdquo;
+            </p>
+          </blockquote>
+        </div>
+      </section>
+
+      <section className="section faq-section">
+        <div className="container faq-section__grid">
+          <div>
+            <p className="section-kicker">Questions</p>
+            <h2>Before you book the audit.</h2>
+          </div>
           <div className="faq-list">
-            {faqData.map((item, i) => (
-              <div key={i} className={`faq-item ${openFaq === i ? 'faq-item--open' : ''}`}>
-                <button className="faq-question" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+            {faqs.map((item, index) => (
+              <div className={`faq-item ${openFaq === index ? 'faq-item--open' : ''}`} key={item.q}>
+                <button
+                  aria-expanded={openFaq === index}
+                  className="faq-question"
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  type="button"
+                >
                   <span>{item.q}</span>
-                  <span className="faq-chevron">{openFaq === i ? '−' : '+'}</span>
+                  <span className="faq-chevron" aria-hidden="true">{openFaq === index ? '-' : '+'}</span>
                 </button>
                 <div className="faq-answer">
                   <p>{item.a}</p>
@@ -209,41 +314,48 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FINAL CTA ── */}
-      <section className="cta-banner">
-        <div className="container" style={{ textAlign: 'center' }}>
-          <h2>Stop Letting Competitors Steal Your Customers</h2>
-          <p style={{ color: 'rgba(255,255,255,0.75)', marginBottom: '2rem' }}>
-            The Dubai market moves fast. Partner with RapidScope Marketing to future-proof your website and capture the traffic you deserve.
-          </p>
-          {form.submitted ? (
-            <div style={{ textAlign: 'center', padding: '2rem 0' }}>
-              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✅</div>
-              <h4 style={{ color: 'var(--accent-color)', marginBottom: '0.5rem' }}>Request Received!</h4>
-              <p style={{ color: 'rgba(255,255,255,0.7)' }}>
-                Thank you! Our team will review your website and get back to you within 24 hours.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={form.handleSubmit} style={{ maxWidth: '500px', margin: '0 auto' }}>
-              <div className="form-group">
-                <input type="text" name="name" className="form-control" placeholder="Your Name" value={form.fields.name} onChange={form.handleChange} required />
+      <section className="cta-banner audit-form-section">
+        <div className="container audit-form-section__grid">
+          <div>
+            <p className="section-kicker">Start here</p>
+            <h2>Claim your free SEO and technical audit.</h2>
+            <p>
+              Send your website and we will review the most important blockers, opportunities, and next steps. No pressure, no vague pitch deck.
+            </p>
+          </div>
+
+          <div className="audit-form-card">
+            {auditForm.submitted ? (
+              <div className="form-success" role="status">
+                <span>Request received</span>
+                <h3>We will review your website and reply within 24 hours.</h3>
+                <button className="btn btn-ghost" onClick={() => window.location.reload()} type="button">Send Another Request</button>
               </div>
-              <div className="form-group">
-                <input type="text" name="company" className="form-control" placeholder="Company Name" value={form.fields.company} onChange={form.handleChange} />
-              </div>
-              <div className="form-group">
-                <input type="url" name="website" className="form-control" placeholder="Website URL" value={form.fields.website} onChange={form.handleChange} required />
-              </div>
-              <div className="form-group">
-                <input type="email" name="email" className="form-control" placeholder="Email Address" value={form.fields.email} onChange={form.handleChange} required />
-              </div>
-              {form.error && <p style={{ color: '#ff6b6b', fontSize: '0.85rem', marginBottom: '1rem' }}>{form.error}</p>}
-              <button type="submit" className="btn btn-accent" style={{ width: '100%' }} disabled={form.submitting}>
-                {form.submitting ? 'Submitting...' : 'Build My SEO Strategy'}
-              </button>
-            </form>
-          )}
+            ) : (
+              <form onSubmit={auditForm.handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="home-name">Your name</label>
+                  <input id="home-name" type="text" name="name" className="form-control" value={auditForm.fields.name} onChange={auditForm.handleChange} required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="home-company">Company name</label>
+                  <input id="home-company" type="text" name="company" className="form-control" value={auditForm.fields.company} onChange={auditForm.handleChange} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="home-website">Website URL</label>
+                  <input id="home-website" type="url" name="website" className="form-control" value={auditForm.fields.website} onChange={auditForm.handleChange} required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="home-email">Email address</label>
+                  <input id="home-email" type="email" name="email" className="form-control" value={auditForm.fields.email} onChange={auditForm.handleChange} required />
+                </div>
+                {auditForm.error && <p className="form-error">{auditForm.error}</p>}
+                <button type="submit" className="btn btn-primary" disabled={auditForm.submitting}>
+                  {auditForm.submitting ? 'Submitting...' : 'Build My SEO Roadmap'}
+                </button>
+              </form>
+            )}
+          </div>
         </div>
       </section>
     </Layout>

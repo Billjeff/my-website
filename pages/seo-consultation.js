@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import RelatedServices from '@/components/RelatedServices';
 import Link from 'next/link';
 
 const deliverables = [
@@ -37,6 +38,24 @@ const faqs = [
   {
     q: 'Will I get a roadmap after the consultation?',
     a: 'Yes. The session is designed around practical next steps, usually including priority fixes, content opportunities, technical risks, internal linking ideas, and a recommended order of execution.',
+  },
+];
+
+const relatedServices = [
+  {
+    title: 'Website Audit',
+    href: '/website-audit',
+    desc: 'Use a deeper audit when the consultation identifies technical, content, or conversion blockers that need evidence.',
+  },
+  {
+    title: 'Topical Map Service',
+    href: '/topical-map',
+    desc: 'Turn strategy into a structured plan for pillars, clusters, internal links, and AI-search ready content.',
+  },
+  {
+    title: 'Monthly SEO',
+    href: '/monthly-seo',
+    desc: 'Move from advice to implementation with an ongoing campaign focused on technical fixes, content, and reporting.',
   },
 ];
 
@@ -138,6 +157,11 @@ export default function SEOConsultation() {
           </div>
         </div>
       </section>
+
+      <RelatedServices
+        intro="Consultation gives you direction. These services help turn that direction into a practical SEO roadmap."
+        items={relatedServices}
+      />
 
       <section className="cta-banner">
         <div className="container cta-split">

@@ -34,6 +34,24 @@ const services = [
   },
 ];
 
+const tracks = [
+  {
+    title: 'Start with evidence',
+    desc: 'Use a website audit or SEO consultation when you need to understand what is blocking visibility, lead quality, or technical performance.',
+    href: '/website-audit',
+  },
+  {
+    title: 'Build the growth system',
+    desc: 'Use web design, topical maps, and monthly SEO when the site needs stronger pages, clearer journeys, and consistent execution.',
+    href: '/web-design',
+  },
+  {
+    title: 'Support authority safely',
+    desc: 'Use cloud link stacking only when the main website, content structure, and priority landing pages are ready for stronger supporting signals.',
+    href: '/cloud-link-stacking',
+  },
+];
+
 export default function Services() {
   return (
     <Layout
@@ -85,6 +103,25 @@ export default function Services() {
             <p>
               Rapid Scope keeps the work commercially grounded, so every sprint is tied to visibility, qualified traffic, and the actions users should take next.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section home-services">
+        <div className="container">
+          <div className="section-heading">
+            <p className="section-kicker">Service pathways</p>
+            <h2>Choose the right route for your current constraint.</h2>
+          </div>
+          <div className="three-card-grid">
+            {tracks.map((track, index) => (
+              <article className="light-card" key={track.title}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <h3>{track.title}</h3>
+                <p>{track.desc}</p>
+                <Link href={track.href} className="btn btn-ghost">Explore route</Link>
+              </article>
+            ))}
           </div>
         </div>
       </section>

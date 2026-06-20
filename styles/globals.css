@@ -1442,6 +1442,33 @@ blockquote p {
   color: rgba(5, 5, 5, 0.66);
 }
 
+.light-card .btn-ghost {
+  align-self: flex-start;
+  margin-top: 1.25rem;
+  border-color: rgba(5, 5, 5, 0.2);
+  background: rgba(5, 5, 5, 0.04);
+  color: var(--color-ink);
+}
+
+.light-card .btn-ghost:hover {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: #ffffff;
+}
+
+.related-services {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.related-services .section-kicker {
+  color: var(--color-muted-dark);
+}
+
+.related-services .section-heading--split > p {
+  color: rgba(5, 5, 5, 0.68);
+}
+
 .service-index {
   border: 1px solid var(--color-line-dark);
   border-radius: var(--radius-md);

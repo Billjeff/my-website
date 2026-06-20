@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import RelatedServices from '@/components/RelatedServices';
 import Link from 'next/link';
 
 const benefits = [
@@ -35,6 +36,24 @@ const faqs = [
   {
     q: 'When should a Dubai business consider this service?',
     a: 'It can be useful when priority pages are technically sound, content is strong, and a competitive SEO campaign needs additional supporting authority, brand entity consistency, and local relevance signals.',
+  },
+];
+
+const relatedServices = [
+  {
+    title: 'Website Audit',
+    href: '/website-audit',
+    desc: 'Confirm that priority pages are technically sound and worth supporting before adding authority layers.',
+  },
+  {
+    title: 'Monthly SEO',
+    href: '/monthly-seo',
+    desc: 'Combine authority support with content improvements, internal links, reporting, and technical SEO work.',
+  },
+  {
+    title: 'Topical Map Service',
+    href: '/topical-map',
+    desc: 'Strengthen the entity and topic structure that cloud assets should reinforce.',
   },
 ];
 
@@ -115,6 +134,11 @@ export default function CloudLinkStacking() {
           </div>
         </div>
       </section>
+
+      <RelatedServices
+        intro="Authority support works best when the main website and content architecture are ready to receive stronger signals."
+        items={relatedServices}
+      />
 
       <section className="section faq-section">
         <div className="container faq-section__grid">

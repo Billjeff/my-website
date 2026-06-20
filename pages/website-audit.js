@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import RelatedServices from '@/components/RelatedServices';
 import Link from 'next/link';
 
 const auditAreas = [
@@ -50,6 +51,24 @@ const faqs = [
   {
     q: 'Do you implement the audit recommendations?',
     a: 'Yes. The audit can stand alone as a roadmap, or Rapid Scope can help implement the technical fixes, content updates, internal links, schema, and web design improvements after the review.',
+  },
+];
+
+const relatedServices = [
+  {
+    title: 'Monthly SEO',
+    href: '/monthly-seo',
+    desc: 'Turn the audit roadmap into consistent technical fixes, content improvements, internal links, and reporting.',
+  },
+  {
+    title: 'Web Design',
+    href: '/web-design',
+    desc: 'Rebuild weak templates, conversion paths, and mobile experiences when the audit shows design is limiting growth.',
+  },
+  {
+    title: 'SEO Consultation',
+    href: '/seo-consultation',
+    desc: 'Discuss the audit findings and decide which technical, content, or authority work should happen first.',
   },
 ];
 
@@ -172,6 +191,11 @@ export default function WebsiteAudit() {
           </div>
         </div>
       </section>
+
+      <RelatedServices
+        intro="A website audit is usually the start of a larger growth path. These services help turn the findings into execution."
+        items={relatedServices}
+      />
 
       <section className="cta-banner">
         <div className="container cta-split">

@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import RelatedServices from '@/components/RelatedServices';
 import Link from 'next/link';
 
 const features = [
@@ -35,6 +36,24 @@ const faqs = [
   {
     q: 'What makes the websites SEO-ready?',
     a: 'SEO-ready builds include clean page hierarchy, crawlable content, mobile-first layouts, fast assets, metadata, schema readiness, internal links, sitemap support, and technical checks before launch.',
+  },
+];
+
+const relatedServices = [
+  {
+    title: 'Website Audit',
+    href: '/website-audit',
+    desc: 'Review the current site before redesigning so SEO equity, redirects, speed, and content gaps are handled early.',
+  },
+  {
+    title: 'Topical Map Service',
+    href: '/topical-map',
+    desc: 'Plan service pages, content clusters, and internal links before the new website structure is finalized.',
+  },
+  {
+    title: 'Monthly SEO',
+    href: '/monthly-seo',
+    desc: 'Keep improving the site after launch with technical SEO, content updates, reporting, and conversion refinements.',
   },
 ];
 
@@ -115,6 +134,11 @@ export default function WebDesign() {
           </div>
         </div>
       </section>
+
+      <RelatedServices
+        intro="A stronger website usually performs best when structure, content, and ongoing optimization are planned together."
+        items={relatedServices}
+      />
 
       <section className="section faq-section">
         <div className="container faq-section__grid">

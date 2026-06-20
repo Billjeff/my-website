@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import RelatedServices from '@/components/RelatedServices';
 import Link from 'next/link';
 
 const deliverables = [
@@ -29,6 +30,24 @@ const faqs = [
   {
     q: 'Can monthly SEO include web design improvements?',
     a: 'Yes. When conversion paths, mobile UX, service page structure, or site performance are limiting lead quality, Rapid Scope can include design and development improvements in the roadmap.',
+  },
+];
+
+const relatedServices = [
+  {
+    title: 'Website Audit',
+    href: '/website-audit',
+    desc: 'Establish the baseline and priority roadmap before starting a monthly SEO campaign.',
+  },
+  {
+    title: 'Topical Map Service',
+    href: '/topical-map',
+    desc: 'Plan the content architecture that monthly SEO can build and improve over time.',
+  },
+  {
+    title: 'Web Design',
+    href: '/web-design',
+    desc: 'Improve templates, page experience, and conversion paths when SEO growth needs stronger UX support.',
   },
 ];
 
@@ -114,6 +133,11 @@ export default function MonthlySEO() {
           </div>
         </div>
       </section>
+
+      <RelatedServices
+        intro="Monthly SEO compounds fastest when technical foundations, content architecture, and conversion paths are aligned."
+        items={relatedServices}
+      />
 
       <section className="section faq-section">
         <div className="container faq-section__grid">

@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import RelatedServices from '@/components/RelatedServices';
 import Link from 'next/link';
 
 const mapPieces = [
@@ -35,6 +36,24 @@ const faqs = [
   {
     q: 'Can Rapid Scope create the content after the map?',
     a: 'Yes. The topical map can be delivered as a standalone strategy, or Rapid Scope can help turn it into briefs, service pages, cluster content, internal links, and ongoing SEO execution.',
+  },
+];
+
+const relatedServices = [
+  {
+    title: 'Monthly SEO',
+    href: '/monthly-seo',
+    desc: 'Turn the topical map into briefs, optimized pages, internal links, and ongoing content improvements.',
+  },
+  {
+    title: 'SEO Consultation',
+    href: '/seo-consultation',
+    desc: 'Review the map direction before committing to a full content production or technical implementation plan.',
+  },
+  {
+    title: 'Website Audit',
+    href: '/website-audit',
+    desc: 'Check whether the current site structure can support the map before building new pages and clusters.',
   },
 ];
 
@@ -115,6 +134,11 @@ export default function TopicalMap() {
           </div>
         </div>
       </section>
+
+      <RelatedServices
+        intro="A topical map becomes more valuable when the site structure, technical foundation, and publishing rhythm support it."
+        items={relatedServices}
+      />
 
       <section className="section faq-section">
         <div className="container faq-section__grid">

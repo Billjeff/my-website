@@ -23,11 +23,42 @@ const steps = [
   'Implementation plan your team can action',
 ];
 
+const outcomes = [
+  {
+    title: 'Know what Google can access',
+    desc: 'We review indexation signals, internal links, rendering risks, redirects, canonicals, sitemap coverage, and page templates so technical gaps are visible.',
+  },
+  {
+    title: 'Prioritize what affects revenue',
+    desc: 'Every finding is tied to impact, effort, and the buyer journey, so your team knows what to fix first and what can wait.',
+  },
+  {
+    title: 'Turn findings into execution',
+    desc: 'You receive a practical roadmap with implementation guidance for developers, content teams, and stakeholders who need clear next steps.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'What does a Rapid Scope website audit include?',
+    a: 'The audit reviews technical SEO, crawlability, indexation, Core Web Vitals signals, metadata, schema readiness, content quality, internal links, mobile UX, conversion paths, and the priority fixes most likely to improve visibility and qualified leads.',
+  },
+  {
+    q: 'Is this only for websites in Dubai?',
+    a: 'Dubai and UAE businesses are the main focus, but the audit framework works for any website that needs clearer technical foundations, stronger service pages, and better search visibility.',
+  },
+  {
+    q: 'Do you implement the audit recommendations?',
+    a: 'Yes. The audit can stand alone as a roadmap, or Rapid Scope can help implement the technical fixes, content updates, internal links, schema, and web design improvements after the review.',
+  },
+];
+
 export default function WebsiteAudit() {
   return (
     <Layout
       canonicalPath="/website-audit"
       description="Get a technical SEO and content audit for your Dubai business, covering crawlability, Core Web Vitals, schema, content gaps and a prioritized roadmap."
+      faqs={faqs}
       pageType="WebPage"
       serviceName="Website Audit"
       title="Website Audit Dubai | Rapid Scope Marketing"
@@ -65,6 +96,41 @@ export default function WebsiteAudit() {
         </div>
       </section>
 
+      <section className="section">
+        <div className="container editorial-grid">
+          <div>
+            <p className="section-kicker">Why audit first</p>
+            <h2>Find the constraint before spending more on traffic.</h2>
+          </div>
+          <div className="copy-stack">
+            <p>
+              Many websites lose organic growth because the foundation is unclear: important pages are buried, search engines cannot interpret the structure, content does not match intent, or forms and calls to action create friction after the click.
+            </p>
+            <p>
+              A Rapid Scope audit gives your Dubai business a clean baseline before bigger SEO, GEO, content, or web design work begins. It shows which fixes protect current visibility, which improvements unlock new demand, and where a better buyer journey can turn more qualified visitors into enquiries.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section home-services">
+        <div className="container">
+          <div className="section-heading">
+            <p className="section-kicker">Audit outcomes</p>
+            <h2>What you can act on after the review.</h2>
+          </div>
+          <div className="three-card-grid">
+            {outcomes.map((outcome, index) => (
+              <article className="light-card" key={outcome.title}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <h3>{outcome.title}</h3>
+                <p>{outcome.desc}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section audit-section">
         <div className="container audit-section__grid">
           <div>
@@ -80,6 +146,27 @@ export default function WebsiteAudit() {
               <div key={step}>
                 <span>{String(index + 1).padStart(2, '0')}</span>
                 <strong>{step}</strong>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section faq-section">
+        <div className="container faq-section__grid">
+          <div>
+            <p className="section-kicker">Website audit FAQ</p>
+            <h2>Questions before you request the roadmap.</h2>
+          </div>
+          <div className="faq-list">
+            {faqs.map((faq) => (
+              <div className="faq-item faq-item--open" key={faq.q}>
+                <div className="faq-question">
+                  <span>{faq.q}</span>
+                </div>
+                <div className="faq-answer">
+                  <p>{faq.a}</p>
+                </div>
               </div>
             ))}
           </div>

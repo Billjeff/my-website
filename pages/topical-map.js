@@ -16,11 +16,34 @@ const mapPieces = [
   },
 ];
 
+const outputs = [
+  'Priority topics grouped by search intent and commercial value',
+  'Recommended pillar pages, service pages, and supporting articles',
+  'Internal link paths that connect clusters to revenue pages',
+  'Briefing notes for content depth, entities, FAQs, and AI-search clarity',
+];
+
+const faqs = [
+  {
+    q: 'What is an SEO topical map?',
+    a: 'A topical map is a structured plan for the pages and content a website needs to cover a subject properly. It organizes pillars, clusters, questions, internal links, and search intent so content production becomes focused.',
+  },
+  {
+    q: 'How does a topical map help AI search visibility?',
+    a: 'AI search systems rely on clear entities, complete answers, and well-structured pages. A topical map helps your site explain a subject deeply and consistently, which can improve citability and topical authority over time.',
+  },
+  {
+    q: 'Can Rapid Scope create the content after the map?',
+    a: 'Yes. The topical map can be delivered as a standalone strategy, or Rapid Scope can help turn it into briefs, service pages, cluster content, internal links, and ongoing SEO execution.',
+  },
+];
+
 export default function TopicalMap() {
   return (
     <Layout
       canonicalPath="/topical-map"
       description="Build an SEO topical map that turns keyword ideas into pillar pages, content clusters and internal links for stronger topical authority."
+      faqs={faqs}
       pageType="WebPage"
       serviceName="Topical Map Service"
       title="Topical Map Services Dubai | Rapid Scope Marketing"
@@ -65,6 +88,51 @@ export default function TopicalMap() {
             <p>
               Rapid Scope maps the pillars, clusters, questions, page intent, and internal links so content production becomes focused instead of random.
             </p>
+            <p>
+              For Dubai businesses, this is especially useful when service pages need to support local intent, industry-specific questions, and buyer journeys that move from research to enquiry.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section audit-section">
+        <div className="container audit-section__grid">
+          <div>
+            <p className="section-kicker">Map deliverables</p>
+            <h2>A content architecture your team can actually build from.</h2>
+            <p>
+              The goal is not a spreadsheet full of random keywords. The goal is a publishing system that shows which pages matter, how they connect, and what each page needs to answer.
+            </p>
+            <Link href="/seo-consultation" className="btn btn-ghost">Discuss Content Strategy</Link>
+          </div>
+          <div className="audit-list">
+            {outputs.map((output, index) => (
+              <div key={output}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <strong>{output}</strong>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section faq-section">
+        <div className="container faq-section__grid">
+          <div>
+            <p className="section-kicker">Topical map FAQ</p>
+            <h2>Questions before you plan the cluster.</h2>
+          </div>
+          <div className="faq-list">
+            {faqs.map((faq) => (
+              <div className="faq-item faq-item--open" key={faq.q}>
+                <div className="faq-question">
+                  <span>{faq.q}</span>
+                </div>
+                <div className="faq-answer">
+                  <p>{faq.a}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

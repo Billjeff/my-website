@@ -13,7 +13,7 @@ function absoluteUrl(path = '/') {
   return `${siteUrl}${path === '/' ? '/' : path}`;
 }
 
-function buildSchema({ canonicalUrl, description, pageType, serviceName, title }) {
+function buildSchema({ canonicalUrl, description, faqs, pageType, serviceName, title }) {
   const graph = [
     {
       '@type': ['Organization', 'LocalBusiness'],
@@ -106,6 +106,21 @@ function buildSchema({ canonicalUrl, description, pageType, serviceName, title }
     });
   }
 
+  if (faqs.length > 0) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${canonicalUrl}#faq`,
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.a,
+        },
+      })),
+    });
+  }
+
   return {
     '@context': 'https://schema.org',
     '@graph': graph,
@@ -116,13 +131,14 @@ export default function Layout({
   children,
   canonicalPath = '/',
   description = defaultDescription,
+  faqs = [],
   pageType = 'WebPage',
   serviceName = '',
   title = 'Rapid Scope Marketing LLC | Dubai SEO Agency',
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const canonicalUrl = absoluteUrl(canonicalPath);
-  const schema = buildSchema({ canonicalUrl, description, pageType, serviceName, title });
+  const schema = buildSchema({ canonicalUrl, description, faqs, pageType, serviceName, title });
 
   return (
     <>

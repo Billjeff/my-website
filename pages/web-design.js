@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout';
 import RelatedServices from '@/components/RelatedServices';
+import ServiceDepth from '@/components/ServiceDepth';
 import Link from 'next/link';
 
 const features = [
@@ -55,6 +56,14 @@ const relatedServices = [
     href: '/monthly-seo',
     desc: 'Keep improving the site after launch with technical SEO, content updates, reporting, and conversion refinements.',
   },
+];
+
+const depthParagraphs = [
+  'Before a redesign moves into visuals, Rapid Scope maps the pages that need to survive, the URLs that need redirects, and the service content that should become clearer. This protects existing SEO equity while giving the new website a stronger structure for future growth.',
+  'The build also plans for the small details that affect leads: sticky navigation on mobile, short contact paths, service-specific CTAs, clear trust signals, fast-loading assets, and page sections that answer buyer questions before the form.',
+  'For Dubai and UAE companies, the result should feel modern without becoming vague. The website needs to state what the business does, where it operates, why it is credible, and how a qualified buyer can take action quickly from any device.',
+  'That is why the website is treated as both a brand asset and a search asset. Visual direction, content hierarchy, page speed, metadata, schema readiness, internal links, and conversion tracking are planned together so launch day does not create a new list of SEO problems to clean up later.',
+  'After launch, the site should also be easy to improve. Clean components, reusable page sections, readable copy blocks, and clear service pathways make it easier to add new pages, update offers, test CTAs, and keep the website aligned with search demand as the business grows.',
 ];
 
 export default function WebDesign() {
@@ -134,6 +143,12 @@ export default function WebDesign() {
           </div>
         </div>
       </section>
+
+      <ServiceDepth
+        kicker="Launch safeguards"
+        title="What gets planned before the new site goes live."
+        paragraphs={depthParagraphs}
+      />
 
       <RelatedServices
         intro="A stronger website usually performs best when structure, content, and ongoing optimization are planned together."

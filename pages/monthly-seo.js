@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout';
 import RelatedServices from '@/components/RelatedServices';
+import ServiceDepth from '@/components/ServiceDepth';
 import Link from 'next/link';
 
 const deliverables = [
@@ -49,6 +50,17 @@ const relatedServices = [
     href: '/web-design',
     desc: 'Improve templates, page experience, and conversion paths when SEO growth needs stronger UX support.',
   },
+];
+
+const depthParagraphs = [
+  'The first month should establish the baseline: technical issues, priority pages, tracking quality, Search Console signals, content gaps, and the conversion paths that matter most. That gives the campaign a clean order of operations instead of a scattered task list.',
+  'The second month usually moves into visible improvements: fixing high-impact technical issues, strengthening service pages, adding internal links, refining metadata, and preparing content briefs that match search demand and buyer intent.',
+  'By the third month, the campaign should be compounding. Reporting should show what changed, what was learned, which pages need more support, and where the next technical, content, design, or authority improvements should focus.',
+  'This rhythm keeps the campaign honest. If rankings improve but enquiries do not, the roadmap can shift toward conversion paths, service page clarity, or lead quality. If pages are indexed but not moving, the next step may be better content depth, stronger internal links, or clearer topical coverage.',
+  'Rapid Scope treats monthly SEO as an operating cadence for the website. The aim is to keep useful improvements shipping, measure what matters, and avoid long gaps where competitors publish, technical issues grow, and promising pages lose momentum.',
+  'The monthly plan also gives stakeholders a cleaner way to make decisions. Instead of guessing whether to publish, redesign, build links, or fix technical issues, the roadmap shows what has the strongest connection to search visibility, buyer trust, and qualified enquiries right now.',
+  'That makes the campaign easier to sustain. The work can adapt as rankings, leads, competitors, and business priorities change, while still keeping the website moving in one direction: clearer pages, stronger authority, better technical health, and more useful organic traffic.',
+  'The result is steady progress instead of reactive SEO.',
 ];
 
 export default function MonthlySEO() {
@@ -133,6 +145,12 @@ export default function MonthlySEO() {
           </div>
         </div>
       </section>
+
+      <ServiceDepth
+        kicker="First 90 days"
+        title="A monthly campaign needs rhythm before it needs volume."
+        paragraphs={depthParagraphs}
+      />
 
       <RelatedServices
         intro="Monthly SEO compounds fastest when technical foundations, content architecture, and conversion paths are aligned."

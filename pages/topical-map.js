@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout';
 import RelatedServices from '@/components/RelatedServices';
+import ServiceDepth from '@/components/ServiceDepth';
 import Link from 'next/link';
 
 const mapPieces = [
@@ -55,6 +56,15 @@ const relatedServices = [
     href: '/website-audit',
     desc: 'Check whether the current site structure can support the map before building new pages and clusters.',
   },
+];
+
+const depthParagraphs = [
+  'A topical map becomes useful when every recommended page has a role. Some pages should capture commercial intent, some should answer comparison or planning questions, and some should support entity clarity so search engines and AI systems understand the wider subject.',
+  'Rapid Scope organizes the map around pillars, service pages, supporting content, FAQs, internal links, and local modifiers where they matter. That gives writers and stakeholders a clear brief instead of a loose keyword list.',
+  'The map also helps prevent content waste. If two ideas serve the same intent, they can be merged. If an important buyer question is missing, it can become a page or section. If a cluster lacks a strong destination page, the structure can be fixed before publishing begins.',
+  'For a service business, this planning protects the commercial pages from becoming isolated. Each article, guide, FAQ, and supporting service page should point the reader toward the next useful step while reinforcing the main topics Rapid Scope wants the website to be known for.',
+  'The finished map can then guide briefs, publishing order, internal link updates, and future service page expansion. It gives the campaign a shared language for deciding what to build next, what to update, and where the website needs more authority before a topic can compete properly.',
+  'It also keeps content production tied to revenue pages.',
 ];
 
 export default function TopicalMap() {
@@ -134,6 +144,12 @@ export default function TopicalMap() {
           </div>
         </div>
       </section>
+
+      <ServiceDepth
+        kicker="From map to pages"
+        title="Every topic should have a job in the buyer journey."
+        paragraphs={depthParagraphs}
+      />
 
       <RelatedServices
         intro="A topical map becomes more valuable when the site structure, technical foundation, and publishing rhythm support it."

@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout';
 import RelatedServices from '@/components/RelatedServices';
+import ServiceDepth from '@/components/ServiceDepth';
 import Link from 'next/link';
 
 const benefits = [
@@ -55,6 +56,14 @@ const relatedServices = [
     href: '/topical-map',
     desc: 'Strengthen the entity and topic structure that cloud assets should reinforce.',
   },
+];
+
+const depthParagraphs = [
+  'Cloud link stacking is most useful when the main domain is already worth supporting. That means the priority pages should be indexable, technically clean, internally linked, and written well enough to satisfy the search intent behind the campaign.',
+  'Rapid Scope checks that the supporting assets reinforce the same brand, service, location, and entity signals used on the website. Consistency matters because disconnected assets can create noise instead of authority.',
+  'The work should sit beside a wider SEO plan that includes content quality, technical fixes, reporting, and sensible internal linking. Used carefully, cloud assets can support stronger discovery and entity reinforcement without pretending to replace the fundamentals.',
+  'The right question is not whether more assets can be published. It is whether those assets support a clear destination, use consistent naming and context, and help search engines understand why the main page deserves attention for a specific service or local topic.',
+  'That is why Rapid Scope starts with page readiness and campaign intent. If the priority page is weak, the better first move is usually content, internal links, schema, or technical cleanup. If the page is already strong, authority architecture can be planned with more confidence and less waste.',
 ];
 
 export default function CloudLinkStacking() {
@@ -134,6 +143,12 @@ export default function CloudLinkStacking() {
           </div>
         </div>
       </section>
+
+      <ServiceDepth
+        kicker="Readiness check"
+        title="Authority support should amplify pages that are ready."
+        paragraphs={depthParagraphs}
+      />
 
       <RelatedServices
         intro="Authority support works best when the main website and content architecture are ready to receive stronger signals."

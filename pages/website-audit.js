@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout';
 import RelatedServices from '@/components/RelatedServices';
+import ServiceDepth from '@/components/ServiceDepth';
 import Link from 'next/link';
 
 const auditAreas = [
@@ -70,6 +71,12 @@ const relatedServices = [
     href: '/seo-consultation',
     desc: 'Discuss the audit findings and decide which technical, content, or authority work should happen first.',
   },
+];
+
+const depthParagraphs = [
+  'The most useful website audit does more than list errors. It explains the relationship between technical access, page quality, search intent, and the moments where a visitor decides whether to trust the business enough to enquire.',
+  'Rapid Scope turns the review into a decision tool. If a page has crawl issues, weak metadata, thin service copy, slow mobile loading, or unclear CTAs, the roadmap shows whether that issue is urgent, revenue-facing, and realistic to fix with the resources available.',
+  'That context matters for Dubai and UAE businesses because search visibility is often local, competitive, and service-led. The audit helps identify which pages should protect existing rankings, which pages need deeper content, and which parts of the website need technical or design support before more traffic is sent to them.',
 ];
 
 export default function WebsiteAudit() {
@@ -170,6 +177,12 @@ export default function WebsiteAudit() {
           </div>
         </div>
       </section>
+
+      <ServiceDepth
+        kicker="Roadmap quality"
+        title="Useful audits make the next decision easier."
+        paragraphs={depthParagraphs}
+      />
 
       <section className="section faq-section">
         <div className="container faq-section__grid">

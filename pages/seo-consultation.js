@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout';
 import RelatedServices from '@/components/RelatedServices';
+import ServiceDepth from '@/components/ServiceDepth';
 import Link from 'next/link';
 
 const deliverables = [
@@ -57,6 +58,15 @@ const relatedServices = [
     href: '/monthly-seo',
     desc: 'Move from advice to implementation with an ongoing campaign focused on technical fixes, content, and reporting.',
   },
+];
+
+const depthParagraphs = [
+  'A strong consultation should answer the questions that block action: which pages matter most, what is preventing indexation or engagement, whether the content strategy matches search demand, and whether the current website can support the next campaign.',
+  'Rapid Scope uses the session to separate symptoms from causes. A ranking dip might come from technical debt, weak internal links, thin service pages, poor local relevance, a stronger competitor page, or a conversion path that does not support the traffic already arriving.',
+  'The output is a practical 90-day direction. That can include quick technical wins, service page improvements, topical map priorities, tracking fixes, local SEO opportunities, AI-search readiness, and a clear recommendation on whether to audit, rebuild, publish, or optimize first.',
+  'This is especially helpful when a team has received conflicting SEO advice. The consultation gives owners, marketers, and developers a shared view of the priorities so budget is not split across disconnected tasks that look busy but do not improve qualified search visibility.',
+  'The best sessions also identify what should be ignored for now. Not every keyword needs a page, not every technical warning deserves immediate development time, and not every competitor tactic is worth copying. The value is in choosing the sequence that gives the website the best chance to earn better traffic and better leads.',
+  'That sequence becomes the filter for every next decision.',
 ];
 
 export default function SEOConsultation() {
@@ -136,6 +146,12 @@ export default function SEOConsultation() {
           ))}
         </div>
       </section>
+
+      <ServiceDepth
+        kicker="Decision clarity"
+        title="The session should turn uncertainty into a sequence."
+        paragraphs={depthParagraphs}
+      />
 
       <section className="section faq-section">
         <div className="container faq-section__grid">

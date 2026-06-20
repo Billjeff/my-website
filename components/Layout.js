@@ -7,13 +7,48 @@ const siteUrl = 'https://rapidscopemarketing.com';
 const siteName = 'Rapid Scope Marketing LLC';
 const defaultDescription = 'SEO, GEO and web design agency in Dubai helping UAE businesses improve technical performance, search visibility and qualified lead generation.';
 const logoUrl = `${siteUrl}/brand/rapid-scope-mark.png`;
+const breadcrumbLabels = {
+  '/about': 'About',
+  '/contact': 'Contact',
+  '/services': 'Services',
+};
 
 function absoluteUrl(path = '/') {
   if (path.startsWith('http')) return path;
   return `${siteUrl}${path === '/' ? '/' : path}`;
 }
 
-function buildSchema({ canonicalUrl, description, faqs, pageType, serviceName, title }) {
+function cleanTitle(title) {
+  return title
+    .replace(' | Rapid Scope Marketing', '')
+    .replace(' | Dubai SEO Agency', '')
+    .replace('Rapid Scope Marketing LLC | ', '')
+    .trim();
+}
+
+function buildBreadcrumbs({ canonicalPath, serviceName, title }) {
+  if (canonicalPath === '/') return [];
+
+  const current = {
+    href: absoluteUrl(canonicalPath),
+    name: serviceName || breadcrumbLabels[canonicalPath] || cleanTitle(title),
+  };
+
+  if (serviceName) {
+    return [
+      { href: `${siteUrl}/`, name: 'Home' },
+      { href: `${siteUrl}/services`, name: 'Services' },
+      current,
+    ];
+  }
+
+  return [
+    { href: `${siteUrl}/`, name: 'Home' },
+    current,
+  ];
+}
+
+function buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, serviceName, title }) {
   const graph = [
     {
       '@type': ['Organization', 'LocalBusiness'],
@@ -85,24 +120,16 @@ function buildSchema({ canonicalUrl, description, faqs, pageType, serviceName, t
     });
   }
 
-  if (canonicalUrl !== `${siteUrl}/`) {
+  if (breadcrumbs.length > 1) {
     graph.push({
       '@type': 'BreadcrumbList',
       '@id': `${canonicalUrl}#breadcrumb`,
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: `${siteUrl}/`,
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: title.replace(' | Rapid Scope Marketing', '').replace(' | Dubai SEO Agency', ''),
-          item: canonicalUrl,
-        },
-      ],
+      itemListElement: breadcrumbs.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        item: item.href,
+      })),
     });
   }
 
@@ -138,7 +165,8 @@ export default function Layout({
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const canonicalUrl = absoluteUrl(canonicalPath);
-  const schema = buildSchema({ canonicalUrl, description, faqs, pageType, serviceName, title });
+  const breadcrumbs = buildBreadcrumbs({ canonicalPath, serviceName, title });
+  const schema = buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, serviceName, title });
 
   return (
     <>
@@ -195,7 +223,28 @@ export default function Layout({
         </div>
       </nav>
 
-      <main>{children}</main>
+      <main>
+        {breadcrumbs.length > 0 && (
+          <nav className="breadcrumb-strip" aria-label="Breadcrumb">
+            <ol className="container breadcrumb-list">
+              {breadcrumbs.map((item, index) => {
+                const isLast = index === breadcrumbs.length - 1;
+
+                return (
+                  <li key={item.href}>
+                    {isLast ? (
+                      <span aria-current="page">{item.name}</span>
+                    ) : (
+                      <Link href={item.href.replace(siteUrl, '') || '/'}>{item.name}</Link>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          </nav>
+        )}
+        {children}
+      </main>
 
       <footer className="footer">
         <div className="container">

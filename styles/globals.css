@@ -275,6 +275,54 @@ p {
   text-transform: uppercase;
 }
 
+.breadcrumb-strip {
+  padding: 6.25rem 0 0;
+  background: #050505;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.breadcrumb-strip + .page-hero {
+  min-height: auto;
+  padding-top: clamp(3rem, 7vw, 5rem);
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 auto;
+  padding-bottom: 0.85rem;
+  list-style: none;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.breadcrumb-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.breadcrumb-list li:not(:last-child)::after {
+  content: "/";
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.breadcrumb-list a {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.breadcrumb-list a:hover {
+  color: var(--color-acid);
+}
+
+.breadcrumb-list span {
+  color: var(--color-acid);
+}
+
 /* Footer */
 .footer {
   position: relative;

@@ -18,7 +18,13 @@ const benefits = [
 
 export default function CloudLinkStacking() {
   return (
-    <Layout title="Cloud Link Stacking Services Dubai | Rapid Scope Marketing">
+    <Layout
+      canonicalPath="/cloud-link-stacking"
+      description="Cloud link stacking services in Dubai for SEO campaigns that need structured authority assets, entity support and safer supporting link signals."
+      pageType="WebPage"
+      serviceName="Cloud Link Stacking"
+      title="Cloud Link Stacking Services Dubai | Rapid Scope Marketing"
+    >
       <section className="page-hero">
         <div className="container page-hero__grid">
           <div>

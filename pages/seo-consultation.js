@@ -12,7 +12,13 @@ const deliverables = [
 
 export default function SEOConsultation() {
   return (
-    <Layout title="SEO Consultation Dubai | Rapid Scope Marketing">
+    <Layout
+      canonicalPath="/seo-consultation"
+      description="Book SEO consultation in Dubai for practical guidance on technical SEO, content strategy, topical authority, local visibility and growth priorities."
+      pageType="WebPage"
+      serviceName="SEO Consultation"
+      title="SEO Consultation Dubai | Rapid Scope Marketing"
+    >
       <section className="page-hero">
         <div className="container page-hero__grid">
           <div>

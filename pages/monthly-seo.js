@@ -12,7 +12,13 @@ const deliverables = [
 
 export default function MonthlySEO() {
   return (
-    <Layout title="Monthly SEO Service Dubai | Rapid Scope Marketing">
+    <Layout
+      canonicalPath="/monthly-seo"
+      description="Monthly SEO services in Dubai with technical fixes, content planning, internal linking, authority planning and transparent roadmap updates."
+      pageType="WebPage"
+      serviceName="Monthly SEO Service"
+      title="Monthly SEO Service Dubai | Rapid Scope Marketing"
+    >
       <section className="page-hero">
         <div className="container page-hero__grid">
           <div>

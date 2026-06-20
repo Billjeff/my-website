@@ -18,7 +18,13 @@ const mapPieces = [
 
 export default function TopicalMap() {
   return (
-    <Layout title="Topical Map Services Dubai | Rapid Scope Marketing">
+    <Layout
+      canonicalPath="/topical-map"
+      description="Build an SEO topical map that turns keyword ideas into pillar pages, content clusters and internal links for stronger topical authority."
+      pageType="WebPage"
+      serviceName="Topical Map Service"
+      title="Topical Map Services Dubai | Rapid Scope Marketing"
+    >
       <section className="page-hero">
         <div className="container page-hero__grid">
           <div>

@@ -18,7 +18,13 @@ const features = [
 
 export default function WebDesign() {
   return (
-    <Layout title="Web Design & Development Dubai | Rapid Scope Marketing">
+    <Layout
+      canonicalPath="/web-design"
+      description="Modern web design and development in Dubai, built for SEO, mobile performance, clear buyer journeys and conversion-focused lead generation."
+      pageType="WebPage"
+      serviceName="Web Design and Development"
+      title="Web Design & Development Dubai | Rapid Scope Marketing"
+    >
       <section className="page-hero">
         <div className="container page-hero__grid">
           <div>

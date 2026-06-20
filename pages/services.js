@@ -36,7 +36,12 @@ const services = [
 
 export default function Services() {
   return (
-    <Layout title="SEO & Web Design Services Dubai | Rapid Scope Marketing">
+    <Layout
+      canonicalPath="/services"
+      description="Explore Rapid Scope SEO and web design services in Dubai, including technical audits, monthly SEO, topical maps, consultation and conversion-focused websites."
+      pageType="CollectionPage"
+      title="SEO & Web Design Services Dubai | Rapid Scope Marketing"
+    >
       <section className="page-hero">
         <div className="container page-hero__grid">
           <div>

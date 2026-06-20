@@ -209,7 +209,12 @@ export default function Home() {
   }, []);
 
   return (
-    <Layout title="Rapid Scope Marketing LLC | SEO & Web Design Agency in Dubai">
+    <Layout
+      canonicalPath="/"
+      description="SEO, GEO and web design agency in Dubai helping UAE businesses improve technical performance, search visibility and qualified lead generation."
+      pageType="WebPage"
+      title="Rapid Scope Marketing LLC | SEO & Web Design Agency in Dubai"
+    >
       <section className="home-hero">
         <div className="home-hero__content">
           <p className="hero-eyebrow">SEO, GEO and web design for ambitious UAE brands</p>

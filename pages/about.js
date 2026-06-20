@@ -18,7 +18,12 @@ const principles = [
 
 export default function About() {
   return (
-    <Layout title="About Rapid Scope Marketing LLC | Dubai SEO Agency">
+    <Layout
+      canonicalPath="/about"
+      description="Learn about Rapid Scope Marketing LLC, a Dubai SEO and web design partner focused on technical foundations, useful content and transparent growth strategy."
+      pageType="AboutPage"
+      title="About Rapid Scope Marketing LLC | Dubai SEO Agency"
+    >
       <section className="page-hero">
         <div className="container page-hero__grid">
           <div>

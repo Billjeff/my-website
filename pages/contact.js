@@ -35,7 +35,12 @@ export default function Contact() {
   };
 
   return (
-    <Layout title="Contact Rapid Scope Marketing LLC | Dubai SEO Agency">
+    <Layout
+      canonicalPath="/contact"
+      description="Contact Rapid Scope Marketing LLC in Dubai to request an SEO audit, web design quote or practical search growth consultation."
+      pageType="ContactPage"
+      title="Contact Rapid Scope Marketing LLC | Dubai SEO Agency"
+    >
       <section className="page-hero">
         <div className="container page-hero__grid">
           <div>

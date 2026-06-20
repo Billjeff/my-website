@@ -3,16 +3,149 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export default function Layout({ children, title = 'Rapid Scope Marketing LLC | Dubai SEO Agency' }) {
+const siteUrl = 'https://rapidscopemarketing.com';
+const siteName = 'Rapid Scope Marketing LLC';
+const defaultDescription = 'SEO, GEO and web design agency in Dubai helping UAE businesses improve technical performance, search visibility and qualified lead generation.';
+const logoUrl = `${siteUrl}/brand/rapid-scope-mark.png`;
+
+function absoluteUrl(path = '/') {
+  if (path.startsWith('http')) return path;
+  return `${siteUrl}${path === '/' ? '/' : path}`;
+}
+
+function buildSchema({ canonicalUrl, description, pageType, serviceName, title }) {
+  const graph = [
+    {
+      '@type': ['Organization', 'LocalBusiness'],
+      '@id': `${siteUrl}/#organization`,
+      name: siteName,
+      url: siteUrl,
+      logo: logoUrl,
+      image: logoUrl,
+      email: 'bilal@rapidscopemarketing.com',
+      telephone: '+971566456855',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Building #8, Ground floor, DMC, Dubai Internet City',
+        addressLocality: 'Dubai',
+        addressCountry: 'AE',
+      },
+      areaServed: [
+        { '@type': 'City', name: 'Dubai' },
+        { '@type': 'Country', name: 'United Arab Emirates' },
+      ],
+      makesOffer: [
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Technical SEO' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Web Design' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'SEO Consultation' } },
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: siteName,
+      publisher: { '@id': `${siteUrl}/#organization` },
+      inLanguage: 'en',
+    },
+    {
+      '@type': pageType,
+      '@id': `${canonicalUrl}#webpage`,
+      url: canonicalUrl,
+      name: title,
+      description,
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      about: { '@id': `${siteUrl}/#organization` },
+      inLanguage: 'en',
+    },
+  ];
+
+  if (serviceName) {
+    graph.push({
+      '@type': 'Service',
+      '@id': `${canonicalUrl}#service`,
+      name: serviceName,
+      description,
+      provider: { '@id': `${siteUrl}/#organization` },
+      areaServed: [
+        { '@type': 'City', name: 'Dubai' },
+        { '@type': 'Country', name: 'United Arab Emirates' },
+      ],
+      url: canonicalUrl,
+    });
+  }
+
+  if (pageType === 'ContactPage') {
+    graph.push({
+      '@type': 'ContactPage',
+      '@id': `${canonicalUrl}#contact`,
+      url: canonicalUrl,
+      name: title,
+      mainEntity: { '@id': `${siteUrl}/#organization` },
+    });
+  }
+
+  if (canonicalUrl !== `${siteUrl}/`) {
+    graph.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: `${siteUrl}/`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: title.replace(' | Rapid Scope Marketing', '').replace(' | Dubai SEO Agency', ''),
+          item: canonicalUrl,
+        },
+      ],
+    });
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': graph,
+  };
+}
+
+export default function Layout({
+  children,
+  canonicalPath = '/',
+  description = defaultDescription,
+  pageType = 'WebPage',
+  serviceName = '',
+  title = 'Rapid Scope Marketing LLC | Dubai SEO Agency',
+}) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const canonicalUrl = absoluteUrl(canonicalPath);
+  const schema = buildSchema({ canonicalUrl, description, pageType, serviceName, title });
 
   return (
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content="Rapid Scope Marketing LLC is a top-rated SEO and Web Design agency in Dubai, UAE. We specialize in driving targeted traffic and accelerating business growth." />
+        <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href={canonicalUrl} />
         <link rel="icon" href="/brand/rapid-scope-favicon.png" type="image/png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={siteName} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={logoUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={logoUrl} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
       </Head>
 
       <nav className="navbar">

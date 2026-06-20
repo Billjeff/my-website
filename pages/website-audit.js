@@ -25,7 +25,13 @@ const steps = [
 
 export default function WebsiteAudit() {
   return (
-    <Layout title="Website Audit Dubai | Rapid Scope Marketing">
+    <Layout
+      canonicalPath="/website-audit"
+      description="Get a technical SEO and content audit for your Dubai business, covering crawlability, Core Web Vitals, schema, content gaps and a prioritized roadmap."
+      pageType="WebPage"
+      serviceName="Website Audit"
+      title="Website Audit Dubai | Rapid Scope Marketing"
+    >
       <section className="page-hero">
         <div className="container page-hero__grid">
           <div>

@@ -29,6 +29,33 @@ const services = [
   },
 ];
 
+const conversionPaths = [
+  {
+    title: 'My website is not getting enough qualified traffic',
+    href: '/website-audit',
+    desc: 'Start with an audit that checks crawlability, indexation, speed, content gaps, local visibility, and conversion friction before you invest in more activity.',
+    action: 'Start with an audit',
+  },
+  {
+    title: 'The site looks dated or does not convert leads',
+    href: '/web-design',
+    desc: 'Use web design when the buyer journey, mobile experience, page speed, trust signals, or service pages are limiting enquiries from the traffic you already have.',
+    action: 'Plan a redesign',
+  },
+  {
+    title: 'We need a clearer content and topic strategy',
+    href: '/topical-map',
+    desc: 'Build a topical map when the site needs stronger pillar pages, cluster content, internal links, FAQs, and AI-search ready answers around your services.',
+    action: 'Map the opportunity',
+  },
+  {
+    title: 'We know what needs fixing and want consistent execution',
+    href: '/monthly-seo',
+    desc: 'Move into monthly SEO when the roadmap is clear and the priority is shipping technical fixes, content improvements, internal links, authority support, and reporting.',
+    action: 'Build momentum',
+  },
+];
+
 const process = [
   {
     step: 'Scope',
@@ -302,6 +329,31 @@ export default function Home() {
                 <h3>{service.title}</h3>
                 <p>{service.desc}</p>
                 <strong>Learn more</strong>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section related-services">
+        <div className="container">
+          <div className="section-heading section-heading--split">
+            <div>
+              <p className="section-kicker">Choose your starting point</p>
+              <h2>Route the problem to the right next step.</h2>
+            </div>
+            <p>
+              Not every business needs the same first move. Use the path below to match your current constraint with the service that will create the clearest next decision.
+            </p>
+          </div>
+
+          <div className="service-index">
+            {conversionPaths.map((path, index) => (
+              <Link href={path.href} className="service-index__row" key={path.title}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <h2>{path.title}</h2>
+                <p>{path.desc}</p>
+                <strong>{path.action}</strong>
               </Link>
             ))}
           </div>

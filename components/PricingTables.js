@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export const pricingPlans = [
+export const auditPricingPlans = [
   {
     eyebrow: 'Website audit',
     title: 'Small Site',
@@ -35,6 +35,9 @@ export const pricingPlans = [
     href: 'https://cloudseodubai.com/audit-intake/?package=large',
     cta: 'Start audit checkout',
   },
+];
+
+export const topicalMapPricingPlans = [
   {
     eyebrow: 'Topical map',
     title: 'Custom Topical Map Blueprint',
@@ -45,21 +48,6 @@ export const pricingPlans = [
     features: ['Entity and keyword clustering', 'Silo architecture', 'Content priority roadmap', 'Internal-linking direction'],
     href: 'https://cloudseodubai.com/topical-map-intake/',
     cta: 'Buy topical map',
-  },
-];
-
-const applicationPlans = [
-  {
-    title: 'Monthly SEO',
-    desc: 'Monthly SEO is application-based because scope depends on technical debt, content needs, authority work, and reporting requirements.',
-    href: '/contact',
-    cta: 'Apply for monthly SEO',
-  },
-  {
-    title: 'Cloud Link Stacking',
-    desc: 'Authority support is quoted after confirming the target URLs, existing content quality, and whether the site is ready for stronger signals.',
-    href: '/cloud-link-stacking',
-    cta: 'Check readiness',
   },
 ];
 
@@ -81,22 +69,39 @@ function CheckoutLink({ href, children, className }) {
   );
 }
 
-export default function PricingTables() {
+const pricingCopy = {
+  audit: {
+    kicker: 'Audit pricing',
+    title: 'Choose the audit size that matches your website.',
+    desc: 'Pricing follows the Cloud SEO checkout process: choose the package, complete the audit intake, then continue to secure Ziina payment.',
+    plans: auditPricingPlans,
+    gridClassName: 'pricing-grid--audit',
+  },
+  topicalMap: {
+    kicker: 'Topical map pricing',
+    title: 'Buy the content architecture blueprint.',
+    desc: 'Start with the topical map intake, then continue through the same secure Ziina checkout process used by Cloud SEO Dubai.',
+    plans: topicalMapPricingPlans,
+    gridClassName: 'pricing-grid--single',
+  },
+};
+
+export default function PricingTables({ type = 'audit' }) {
+  const content = pricingCopy[type] || pricingCopy.audit;
+
   return (
     <section className="section pricing-section" id="pricing">
       <div className="container">
         <div className="section-heading section-heading--split">
           <div>
-            <p className="section-kicker">Pricing</p>
-            <h2>Fixed-price audit and strategy packages.</h2>
+            <p className="section-kicker">{content.kicker}</p>
+            <h2>{content.title}</h2>
           </div>
-          <p>
-            Pricing follows the Cloud SEO checkout process: choose the package, complete the intake, then continue to secure Ziina payment where available.
-          </p>
+          <p>{content.desc}</p>
         </div>
 
-        <div className="pricing-grid">
-          {pricingPlans.map((plan) => (
+        <div className={`pricing-grid ${content.gridClassName}`}>
+          {content.plans.map((plan) => (
             <article className={`pricing-card ${plan.featured ? 'pricing-card--featured' : ''}`} key={plan.title}>
               <p className="pricing-card__eyebrow">{plan.eyebrow}</p>
               <h3>{plan.title}</h3>
@@ -112,19 +117,6 @@ export default function PricingTables() {
                 ))}
               </ul>
               <CheckoutLink className="btn btn-primary" href={plan.href}>{plan.cta}</CheckoutLink>
-            </article>
-          ))}
-        </div>
-
-        <div className="pricing-note-grid">
-          {applicationPlans.map((plan) => (
-            <article className="pricing-note-card" key={plan.title}>
-              <div>
-                <p className="section-kicker">Application based</p>
-                <h3>{plan.title}</h3>
-                <p>{plan.desc}</p>
-              </div>
-              <CheckoutLink className="btn btn-ghost" href={plan.href}>{plan.cta}</CheckoutLink>
             </article>
           ))}
         </div>

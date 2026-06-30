@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import PricingTables from '@/components/PricingTables';
 import RelatedServices from '@/components/RelatedServices';
 import ServiceDepth from '@/components/ServiceDepth';
 import Link from 'next/link';
@@ -183,6 +184,8 @@ export default function WebsiteAudit() {
         title="Useful audits make the next decision easier."
         paragraphs={depthParagraphs}
       />
+
+      <PricingTables type="audit" />
 
       <section className="section faq-section">
         <div className="container faq-section__grid">

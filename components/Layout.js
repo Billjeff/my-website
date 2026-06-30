@@ -10,7 +10,6 @@ const logoUrl = `${siteUrl}/brand/rapid-scope-mark.png`;
 const breadcrumbLabels = {
   '/about': 'About',
   '/contact': 'Contact',
-  '/pricing': 'Pricing',
   '/services': 'Services',
 };
 const servicesDropdown = [
@@ -243,7 +242,6 @@ export default function Layout({
               </div>
             </div>
             <Link href="/website-audit" onClick={() => setMenuOpen(false)}>Audit</Link>
-            <Link href="/pricing" onClick={() => setMenuOpen(false)}>Pricing</Link>
             <Link href="/web-design" onClick={() => setMenuOpen(false)}>Web Design</Link>
             <Link href="/contact" className="btn btn-primary" onClick={() => setMenuOpen(false)}>Get a Quote</Link>
           </div>
@@ -288,7 +286,6 @@ export default function Layout({
               <p><Link href="/monthly-seo">Monthly SEO Service</Link></p>
               <p><Link href="/seo-consultation">SEO Consultation</Link></p>
               <p><Link href="/web-design">Web Design & Development</Link></p>
-              <p><Link href="/pricing">Pricing</Link></p>
             </div>
             <div>
               <h3>Contact</h3>

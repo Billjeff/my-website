@@ -1604,6 +1604,15 @@ blockquote p {
   gap: 1rem;
 }
 
+.pricing-grid--audit {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pricing-grid--single {
+  max-width: 46rem;
+  grid-template-columns: 1fr;
+}
+
 .pricing-card {
   min-height: 100%;
   display: flex;

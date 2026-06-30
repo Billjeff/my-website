@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import PricingTables from '@/components/PricingTables';
 import RelatedServices from '@/components/RelatedServices';
 import ServiceDepth from '@/components/ServiceDepth';
 import Link from 'next/link';
@@ -155,6 +156,8 @@ export default function TopicalMap() {
         intro="A topical map becomes more valuable when the site structure, technical foundation, and publishing rhythm support it."
         items={relatedServices}
       />
+
+      <PricingTables type="topicalMap" />
 
       <section className="section faq-section">
         <div className="container faq-section__grid">

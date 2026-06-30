@@ -12,6 +12,14 @@ const breadcrumbLabels = {
   '/contact': 'Contact',
   '/services': 'Services',
 };
+const servicesDropdown = [
+  { href: '/cloud-link-stacking', label: 'High DA Cloud Link Stacking' },
+  { href: '/website-audit', label: 'Website Audit Service' },
+  { href: '/topical-map', label: 'Topical Map Service' },
+  { href: '/monthly-seo', label: 'Monthly SEO Service' },
+  { href: '/seo-consultation', label: 'SEO Consultation' },
+  { href: '/web-design', label: 'Web Design & Development' },
+];
 
 function absoluteUrl(path = '/') {
   if (path.startsWith('http')) return path;
@@ -215,7 +223,24 @@ export default function Layout({
           <div className={`nav-links ${menuOpen ? 'nav-links--open' : ''}`}>
             <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
             <Link href="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
-            <Link href="/services" onClick={() => setMenuOpen(false)}>Services</Link>
+            <div className="nav-dropdown">
+              <Link
+                aria-haspopup="true"
+                className="nav-dropdown__trigger"
+                href="/services"
+                onClick={() => setMenuOpen(false)}
+              >
+                Services
+                <span aria-hidden="true">+</span>
+              </Link>
+              <div className="nav-dropdown__menu" aria-label="Services menu">
+                {servicesDropdown.map((service) => (
+                  <Link href={service.href} key={service.href} onClick={() => setMenuOpen(false)}>
+                    {service.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
             <Link href="/website-audit" onClick={() => setMenuOpen(false)}>Audit</Link>
             <Link href="/web-design" onClick={() => setMenuOpen(false)}>Web Design</Link>
             <Link href="/contact" className="btn btn-primary" onClick={() => setMenuOpen(false)}>Get a Quote</Link>

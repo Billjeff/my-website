@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import PricingTables from '@/components/PricingTables';
 import Link from 'next/link';
 
 const services = [
@@ -125,6 +126,8 @@ export default function Services() {
           </div>
         </div>
       </section>
+
+      <PricingTables />
     </Layout>
   );
 }

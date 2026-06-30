@@ -1498,10 +1498,15 @@ blockquote p {
   align-items: center;
 }
 
+.page-hero__grid > * {
+  min-width: 0;
+}
+
 .page-hero h1 {
-  max-width: 10ch;
+  max-width: min(10ch, 100%);
   margin-bottom: 0;
-  font-size: clamp(3rem, 7vw, 7rem);
+  overflow-wrap: anywhere;
+  font-size: clamp(3rem, 6.1vw, 6.4rem);
 }
 
 .page-hero__copy {

@@ -7,6 +7,7 @@ const siteUrl = 'https://rapidscopemarketing.com';
 const siteName = 'Rapid Scope Marketing LLC';
 const defaultDescription = 'SEO, GEO and web design agency in Dubai helping UAE businesses improve technical performance, search visibility and qualified lead generation.';
 const logoUrl = `${siteUrl}/brand/rapid-scope-mark.png`;
+const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 const breadcrumbLabels = {
   '/about': 'About',
   '/contact': 'Contact',
@@ -184,6 +185,9 @@ export default function Layout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href={canonicalUrl} />
         <link rel="icon" href="/brand/rapid-scope-favicon.png" type="image/png" />
+        {googleSiteVerification ? (
+          <meta name="google-site-verification" content={googleSiteVerification} />
+        ) : null}
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content={siteName} />
         <meta property="og:title" content={title} />

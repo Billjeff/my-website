@@ -41,13 +41,15 @@ Optional settings:
 
 ```bash
 ZIINA_CURRENCY_CODE=AED
+USD_TO_AED_RATE=3.67
 ZIINA_TEST_MODE=false
 NEXT_PUBLIC_SITE_URL=https://rapidscopemarketing.com
 ```
 
 The API key must never be exposed with a `NEXT_PUBLIC_` prefix. The server
-creates a Ziina Payment Intent, sends the amount in base units/fils (`70` becomes
-`7000`), sets success/cancel/failure URLs, and redirects the buyer to Ziina's
+creates a Ziina Payment Intent, converts the site-facing USD price into AED
+when `ZIINA_CURRENCY_CODE=AED` (`$70` becomes `AED 256.90`, sent as `25690`
+fils), sets success/cancel/failure URLs, and redirects the buyer to Ziina's
 hosted payment page using the returned `redirect_url`.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.

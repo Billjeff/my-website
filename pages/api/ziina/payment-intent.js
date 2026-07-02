@@ -1,5 +1,6 @@
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://rapidscopemarketing.com';
 const ziinaApiUrl = 'https://api-v2.ziina.com/api/payment_intent';
+const defaultUsdToAedRate = 3.67;
 
 const packageOptions = {
   basic: {
@@ -32,6 +33,11 @@ function getZiinaApiKey() {
   return process.env.ZIINA_API_KEY || process.env.ZIINA_ACCESS_TOKEN;
 }
 
+function getUsdToAedRate() {
+  const configuredRate = Number.parseFloat(process.env.USD_TO_AED_RATE);
+  return Number.isFinite(configuredRate) && configuredRate > 0 ? configuredRate : defaultUsdToAedRate;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -50,9 +56,11 @@ export default async function handler(req, res) {
   }
 
   const quantity = normalizeQuantity(rawQuantity);
-  const total = selectedPackage.price * quantity;
-  const amount = total * 100;
+  const totalUsd = selectedPackage.price * quantity;
   const currencyCode = process.env.ZIINA_CURRENCY_CODE || 'AED';
+  const amount = currencyCode === 'AED'
+    ? Math.round(totalUsd * getUsdToAedRate() * 100)
+    : Math.round(totalUsd * 100);
   const packageLabel = `${selectedPackage.label} - ${selectedPackage.title}`;
   const intentParams = new URLSearchParams({
     package: packageId,
@@ -63,7 +71,7 @@ export default async function handler(req, res) {
   const paymentPayload = {
     amount,
     currency_code: currencyCode,
-    message: `Rapid Scope ${packageLabel} x${quantity}`,
+    message: `Rapid Scope ${packageLabel} x${quantity} ($${totalUsd})`,
     success_url: `${returnUrl}&payment=success`,
     cancel_url: `${returnUrl}&payment=cancelled`,
     failure_url: `${returnUrl}&payment=failed`,
@@ -98,6 +106,7 @@ export default async function handler(req, res) {
       paymentIntentId: data.id,
       amount,
       currencyCode,
+      totalUsd,
     });
   } catch (error) {
     console.error('[Ziina] Payment intent error:', error);

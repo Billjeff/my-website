@@ -34,20 +34,21 @@ Cloud Link Stacking checkout uses Ziina's custom integration. Set this private
 server-side deployment environment variable:
 
 ```bash
-ZIINA_ACCESS_TOKEN=
+ZIINA_API_KEY=
 ```
 
 Optional settings:
 
 ```bash
-ZIINA_CURRENCY_CODE=USD
+ZIINA_CURRENCY_CODE=AED
 ZIINA_TEST_MODE=false
 NEXT_PUBLIC_SITE_URL=https://rapidscopemarketing.com
 ```
 
-The access token must never be exposed with a `NEXT_PUBLIC_` prefix. The server
-creates a Ziina Payment Intent and redirects the buyer to Ziina's hosted payment
-page.
+The API key must never be exposed with a `NEXT_PUBLIC_` prefix. The server
+creates a Ziina Payment Intent, sends the amount in base units/fils (`70` becomes
+`7000`), sets success/cancel/failure URLs, and redirects the buyer to Ziina's
+hosted payment page using the returned `redirect_url`.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 

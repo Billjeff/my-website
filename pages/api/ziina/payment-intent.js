@@ -28,14 +28,18 @@ function normalizeQuantity(value) {
   return Math.min(10, Math.max(1, parsed));
 }
 
+function getZiinaApiKey() {
+  return process.env.ZIINA_API_KEY || process.env.ZIINA_ACCESS_TOKEN;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const accessToken = process.env.ZIINA_ACCESS_TOKEN;
-  if (!accessToken) {
-    return res.status(503).json({ error: 'Ziina checkout is not configured. Add ZIINA_ACCESS_TOKEN in the deployment environment.' });
+  const apiKey = getZiinaApiKey();
+  if (!apiKey) {
+    return res.status(503).json({ error: 'Ziina checkout is not configured. Add ZIINA_API_KEY in the deployment environment.' });
   }
 
   const { packageId = 'basic', quantity: rawQuantity = 1, customer = {}, targetUrl = '' } = req.body;
@@ -48,7 +52,7 @@ export default async function handler(req, res) {
   const quantity = normalizeQuantity(rawQuantity);
   const total = selectedPackage.price * quantity;
   const amount = total * 100;
-  const currencyCode = process.env.ZIINA_CURRENCY_CODE || 'USD';
+  const currencyCode = process.env.ZIINA_CURRENCY_CODE || 'AED';
   const packageLabel = `${selectedPackage.label} - ${selectedPackage.title}`;
   const intentParams = new URLSearchParams({
     package: packageId,
@@ -80,7 +84,7 @@ export default async function handler(req, res) {
     const ziinaResponse = await fetch(ziinaApiUrl, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(paymentPayload),

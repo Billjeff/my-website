@@ -42,7 +42,7 @@ export default async function handler(req, res) {
     return res.status(503).json({ error: 'Ziina checkout is not configured. Add ZIINA_API_KEY in the deployment environment.' });
   }
 
-  const { packageId = 'basic', quantity: rawQuantity = 1, customer = {}, targetUrl = '' } = req.body;
+  const { packageId = 'basic', quantity: rawQuantity = 1 } = req.body;
   const selectedPackage = packageOptions[packageId];
 
   if (!selectedPackage) {
@@ -63,13 +63,7 @@ export default async function handler(req, res) {
   const paymentPayload = {
     amount,
     currency_code: currencyCode,
-    message: [
-      `Rapid Scope Cloud Link Stacking`,
-      `Package: ${packageLabel}`,
-      `Quantity: ${quantity}`,
-      `Target URL: ${targetUrl || 'Provided in intake'}`,
-      customer.email ? `Customer: ${customer.email}` : '',
-    ].filter(Boolean).join('\n'),
+    message: `Rapid Scope ${packageLabel} x${quantity}`,
     success_url: `${returnUrl}&payment=success`,
     cancel_url: `${returnUrl}&payment=cancelled`,
     failure_url: `${returnUrl}&payment=failed`,
@@ -95,7 +89,7 @@ export default async function handler(req, res) {
     if (!ziinaResponse.ok || !data.redirect_url) {
       return res.status(502).json({
         error: 'Unable to create Ziina checkout.',
-        detail: data.latest_error?.message || data.message || 'Ziina did not return a checkout URL.',
+        detail: data.latest_error?.message || data.error?.message || data.errors?.[0]?.message || data.message || 'Ziina did not return a checkout URL.',
       });
     }
 

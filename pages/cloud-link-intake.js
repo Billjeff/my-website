@@ -87,8 +87,14 @@ export default function CloudLinkIntake() {
         }),
       });
 
-      if (!response.ok) throw new Error('Request failed');
+      if (!response.ok) {
+        console.warn('[Cloud Link Intake] Lead logging failed before checkout.');
+      }
+    } catch {
+      console.warn('[Cloud Link Intake] Lead logging unavailable before checkout.');
+    }
 
+    try {
       const checkoutResponse = await fetch('/api/ziina/payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

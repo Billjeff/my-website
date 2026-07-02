@@ -28,6 +28,21 @@ Google Search Console HTML tag value only. The shared site layout renders it as:
 Do not include the full meta tag in the environment value. Use the token from
 Google Search Console's HTML tag verification method.
 
+## Ziina Checkout Links
+
+Cloud Link Stacking package buttons use Ziina payment links when these deployment
+environment variables are set:
+
+```bash
+NEXT_PUBLIC_ZIINA_CLOUD_LINK_BASIC_URL=
+NEXT_PUBLIC_ZIINA_CLOUD_LINK_STANDARD_URL=
+NEXT_PUBLIC_ZIINA_CLOUD_LINK_PREMIUM_URL=
+```
+
+Use full Ziina payment URLs for the matching package price. If a package URL is
+missing, the button falls back to the contact page with package, quantity, and
+total details in the query string.
+
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
 [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.

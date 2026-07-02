@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import CloudLinkPricing from '@/components/CloudLinkPricing';
 import RelatedServices from '@/components/RelatedServices';
 import ServiceDepth from '@/components/ServiceDepth';
 import Link from 'next/link';
@@ -149,6 +150,8 @@ export default function CloudLinkStacking() {
         title="Authority support should amplify pages that are ready."
         paragraphs={depthParagraphs}
       />
+
+      <CloudLinkPricing />
 
       <RelatedServices
         intro="Authority support works best when the main website and content architecture are ready to receive stronger signals."

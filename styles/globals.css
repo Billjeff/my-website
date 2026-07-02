@@ -1755,6 +1755,179 @@ blockquote p {
   color: #ffffff;
 }
 
+.cloud-pricing-section {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.cloud-pricing-section .section-kicker,
+.cloud-pricing-section .section-heading--split > p {
+  color: var(--color-muted-dark);
+}
+
+.cloud-pricing-panel {
+  max-width: 58rem;
+  padding: clamp(1.25rem, 4vw, 3rem);
+  border: 1px solid var(--color-line-dark);
+  border-radius: var(--radius-md);
+  background: #fffdf7;
+  box-shadow: 0 28px 80px rgba(5, 5, 5, 0.08);
+}
+
+.cloud-pricing-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: clamp(2rem, 5vw, 3.25rem);
+}
+
+.cloud-pricing-tabs button {
+  min-height: 4rem;
+  border: 1px solid rgba(5, 5, 5, 0.08);
+  border-radius: var(--radius-sm);
+  background: rgba(5, 5, 5, 0.05);
+  color: rgba(5, 5, 5, 0.68);
+  cursor: pointer;
+  font: inherit;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 850;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.cloud-pricing-tabs button:hover,
+.cloud-pricing-tabs button:focus-visible,
+.cloud-pricing-tabs button.is-active {
+  border-color: var(--color-acid);
+  background: var(--color-acid);
+  color: var(--color-ink);
+  transform: translateY(-1px);
+}
+
+.cloud-pricing-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: end;
+}
+
+.cloud-pricing-summary h3 {
+  margin: 0.5rem 0 0;
+  color: var(--color-ink);
+  font-size: clamp(2.25rem, 5vw, 4.6rem);
+  line-height: 0.95;
+}
+
+.cloud-pricing-summary__subtitle {
+  margin: 0.9rem 0 0;
+  color: rgba(5, 5, 5, 0.62);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 800;
+}
+
+.cloud-pricing-summary__meta {
+  display: grid;
+  gap: 0.5rem;
+  text-align: right;
+}
+
+.cloud-pricing-summary__meta strong {
+  color: var(--color-ink);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 0.9;
+}
+
+.cloud-pricing-summary__meta span {
+  color: rgba(5, 5, 5, 0.58);
+  font-weight: 850;
+}
+
+.cloud-pricing-features {
+  display: grid;
+  gap: 1rem;
+  margin: clamp(1.75rem, 4vw, 2.75rem) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cloud-pricing-features li {
+  position: relative;
+  padding-left: 2rem;
+  color: rgba(5, 5, 5, 0.68);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.cloud-pricing-features li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.42em;
+  width: 0.85rem;
+  height: 0.45rem;
+  border-bottom: 3px solid #16a34a;
+  border-left: 3px solid #16a34a;
+  transform: rotate(-45deg);
+}
+
+.cloud-pricing-purchase {
+  display: grid;
+  gap: 1rem;
+}
+
+.quantity-stepper {
+  display: grid;
+  grid-template-columns: 4.5rem 7rem 4.5rem;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.quantity-stepper button,
+.quantity-stepper span {
+  min-height: 4rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-line-dark);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  color: var(--color-ink);
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.quantity-stepper button {
+  cursor: pointer;
+}
+
+.quantity-stepper button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.cloud-pricing-purchase .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.cloud-pricing-secure {
+  margin: 1.5rem 0 0;
+  color: #15803d;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 850;
+  text-align: center;
+}
+
+.checkout-summary {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--color-line-dark);
+  border-radius: var(--radius-md);
+  background: #fffdf7;
+}
+
+.checkout-summary h2 {
+  color: var(--color-ink);
+}
+
 .service-index {
   border: 1px solid var(--color-line-dark);
   border-radius: var(--radius-md);
@@ -2083,6 +2256,19 @@ blockquote p {
   .pricing-note-card {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .cloud-pricing-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .cloud-pricing-summary__meta {
+    text-align: left;
+  }
+
+  .cloud-pricing-tabs,
+  .quantity-stepper {
+    grid-template-columns: 1fr;
   }
 
   .service-index__row {

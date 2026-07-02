@@ -10,7 +10,6 @@ const packages = [
     delivery: '12 days',
     signalCount: '5 off-page geo-signals',
     desc: 'An overwhelming surge of 5 off-page geo-signals. Maximum network syndication to aggressively dominate your local market. Also includes putting all links through a premium indexer.',
-    ziinaUrl: process.env.NEXT_PUBLIC_ZIINA_CLOUD_LINK_PREMIUM_URL,
   },
   {
     id: 'standard',
@@ -21,7 +20,6 @@ const packages = [
     delivery: '10 days',
     signalCount: '3 off-page geo-signals',
     desc: 'High-impact local authority campaign. 3 powerful off-page signals designed to push mid-level competition.',
-    ziinaUrl: process.env.NEXT_PUBLIC_ZIINA_CLOUD_LINK_STANDARD_URL,
   },
   {
     id: 'basic',
@@ -32,7 +30,6 @@ const packages = [
     delivery: '7 days',
     signalCount: '1 geo-network signal',
     desc: 'Essential off-page proximity boost. Includes 1 geo-network signal to kickstart your local visibility.',
-    ziinaUrl: process.env.NEXT_PUBLIC_ZIINA_CLOUD_LINK_BASIC_URL,
   },
 ];
 

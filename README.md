@@ -28,20 +28,26 @@ Google Search Console HTML tag value only. The shared site layout renders it as:
 Do not include the full meta tag in the environment value. Use the token from
 Google Search Console's HTML tag verification method.
 
-## Ziina Checkout Links
+## Ziina Checkout
 
-Cloud Link Stacking package buttons use Ziina payment links when these deployment
-environment variables are set:
+Cloud Link Stacking checkout uses Ziina's custom integration. Set this private
+server-side deployment environment variable:
 
 ```bash
-NEXT_PUBLIC_ZIINA_CLOUD_LINK_BASIC_URL=
-NEXT_PUBLIC_ZIINA_CLOUD_LINK_STANDARD_URL=
-NEXT_PUBLIC_ZIINA_CLOUD_LINK_PREMIUM_URL=
+ZIINA_ACCESS_TOKEN=
 ```
 
-Use full Ziina payment URLs for the matching package price. If a package URL is
-missing, the button falls back to the contact page with package, quantity, and
-total details in the query string.
+Optional settings:
+
+```bash
+ZIINA_CURRENCY_CODE=USD
+ZIINA_TEST_MODE=false
+NEXT_PUBLIC_SITE_URL=https://rapidscopemarketing.com
+```
+
+The access token must never be exposed with a `NEXT_PUBLIC_` prefix. The server
+creates a Ziina Payment Intent and redirects the buyer to Ziina's hosted payment
+page.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 

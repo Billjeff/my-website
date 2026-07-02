@@ -9,21 +9,18 @@ const packageOptions = {
     title: 'Local Ignition',
     price: 70,
     delivery: '7 days',
-    ziinaUrl: process.env.NEXT_PUBLIC_ZIINA_CLOUD_LINK_BASIC_URL,
   },
   standard: {
     label: 'Standard',
     title: 'Authority Accelerator',
     price: 90,
     delivery: '10 days',
-    ziinaUrl: process.env.NEXT_PUBLIC_ZIINA_CLOUD_LINK_STANDARD_URL,
   },
   premium: {
     label: 'Premium',
     title: 'The Ranking Rocket',
     price: 110,
     delivery: '12 days',
-    ziinaUrl: process.env.NEXT_PUBLIC_ZIINA_CLOUD_LINK_PREMIUM_URL,
   },
 };
 
@@ -39,7 +36,6 @@ function normalizeQuantity(value) {
 
 export default function CloudLinkIntake() {
   const router = useRouter();
-  const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [fields, setFields] = useState({
@@ -93,14 +89,31 @@ export default function CloudLinkIntake() {
 
       if (!response.ok) throw new Error('Request failed');
 
-      if (selectedPackage.ziinaUrl) {
-        window.location.href = selectedPackage.ziinaUrl;
-        return;
+      const checkoutResponse = await fetch('/api/ziina/payment-intent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          packageId,
+          quantity,
+          targetUrl: fields.targetUrl,
+          customer: {
+            name: fields.name,
+            email: fields.email,
+            phone: fields.phone,
+            company: fields.company,
+          },
+        }),
+      });
+
+      const checkout = await checkoutResponse.json().catch(() => ({}));
+      if (!checkoutResponse.ok || !checkout.redirectUrl) {
+        throw new Error(checkout.error || 'Ziina checkout failed');
       }
 
-      setSubmitted(true);
+      window.location.href = checkout.redirectUrl;
+      return;
     } catch {
-      setError('Something went wrong. Please try again or email bilal@rapidscopemarketing.com.');
+      setError('Something went wrong creating the Ziina checkout. Please try again or email bilal@rapidscopemarketing.com.');
     }
 
     setSubmitting(false);
@@ -145,47 +158,40 @@ export default function CloudLinkIntake() {
           </aside>
 
           <div className="audit-form-card">
-            {submitted ? (
-              <div className="form-success" role="status">
-                <span>Intake received</span>
-                <h3>Your order details were saved. Add the Ziina payment link to activate instant checkout.</h3>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="cloud-link-name">Your name</label>
+                <input id="cloud-link-name" type="text" name="name" className="form-control" value={fields.name} onChange={handleChange} required />
               </div>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="cloud-link-name">Your name</label>
-                  <input id="cloud-link-name" type="text" name="name" className="form-control" value={fields.name} onChange={handleChange} required />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="cloud-link-email">Email address</label>
-                  <input id="cloud-link-email" type="email" name="email" className="form-control" value={fields.email} onChange={handleChange} required />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="cloud-link-phone">Phone number</label>
-                  <input id="cloud-link-phone" type="tel" name="phone" className="form-control" value={fields.phone} onChange={handleChange} />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="cloud-link-company">Company name</label>
-                  <input id="cloud-link-company" type="text" name="company" className="form-control" value={fields.company} onChange={handleChange} />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="cloud-link-website">Website URL</label>
-                  <input id="cloud-link-website" type="url" name="website" className="form-control" value={fields.website} onChange={handleChange} required />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="cloud-link-target">Target page URL</label>
-                  <input id="cloud-link-target" type="url" name="targetUrl" className="form-control" value={fields.targetUrl} onChange={handleChange} required />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="cloud-link-notes">Campaign notes</label>
-                  <textarea id="cloud-link-notes" name="notes" className="form-control" placeholder={orderMessage} value={fields.notes} onChange={handleChange} />
-                </div>
-                {error && <p className="form-error">{error}</p>}
-                <button type="submit" className="btn btn-primary" disabled={submitting}>
-                  {submitting ? 'Submitting...' : `Continue to Ziina Checkout ($${total}.00)`}
-                </button>
-              </form>
-            )}
+              <div className="form-group">
+                <label htmlFor="cloud-link-email">Email address</label>
+                <input id="cloud-link-email" type="email" name="email" className="form-control" value={fields.email} onChange={handleChange} required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="cloud-link-phone">Phone number</label>
+                <input id="cloud-link-phone" type="tel" name="phone" className="form-control" value={fields.phone} onChange={handleChange} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="cloud-link-company">Company name</label>
+                <input id="cloud-link-company" type="text" name="company" className="form-control" value={fields.company} onChange={handleChange} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="cloud-link-website">Website URL</label>
+                <input id="cloud-link-website" type="url" name="website" className="form-control" value={fields.website} onChange={handleChange} required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="cloud-link-target">Target page URL</label>
+                <input id="cloud-link-target" type="url" name="targetUrl" className="form-control" value={fields.targetUrl} onChange={handleChange} required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="cloud-link-notes">Campaign notes</label>
+                <textarea id="cloud-link-notes" name="notes" className="form-control" placeholder={orderMessage} value={fields.notes} onChange={handleChange} />
+              </div>
+              {error && <p className="form-error">{error}</p>}
+              <button type="submit" className="btn btn-primary" disabled={submitting}>
+                {submitting ? 'Submitting...' : `Continue to Ziina Checkout ($${total}.00)`}
+              </button>
+            </form>
           </div>
         </div>
       </section>

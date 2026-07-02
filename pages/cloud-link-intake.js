@@ -107,13 +107,13 @@ export default function CloudLinkIntake() {
 
       const checkout = await checkoutResponse.json().catch(() => ({}));
       if (!checkoutResponse.ok || !checkout.redirectUrl) {
-        throw new Error(checkout.error || 'Ziina checkout failed');
+        throw new Error(checkout.detail || checkout.error || 'Ziina checkout failed');
       }
 
       window.location.href = checkout.redirectUrl;
       return;
-    } catch {
-      setError('Something went wrong creating the Ziina checkout. Please try again or email bilal@rapidscopemarketing.com.');
+    } catch (checkoutError) {
+      setError(checkoutError.message || 'Something went wrong creating the Ziina checkout. Please try again or email bilal@rapidscopemarketing.com.');
     }
 
     setSubmitting(false);

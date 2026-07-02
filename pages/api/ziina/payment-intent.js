@@ -35,7 +35,7 @@ export default async function handler(req, res) {
 
   const accessToken = process.env.ZIINA_ACCESS_TOKEN;
   if (!accessToken) {
-    return res.status(500).json({ error: 'Ziina checkout is not configured.' });
+    return res.status(503).json({ error: 'Ziina checkout is not configured. Add ZIINA_ACCESS_TOKEN in the deployment environment.' });
   }
 
   const { packageId = 'basic', quantity: rawQuantity = 1, customer = {}, targetUrl = '' } = req.body;

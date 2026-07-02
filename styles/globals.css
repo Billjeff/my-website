@@ -1921,11 +1921,37 @@ blockquote p {
   padding: clamp(1.25rem, 3vw, 2rem);
   border: 1px solid var(--color-line-dark);
   border-radius: var(--radius-md);
-  background: #fffdf7;
+  background:
+    radial-gradient(circle at 90% 8%, rgba(230, 255, 46, 0.18), transparent 12rem),
+    #fffdf7;
+  box-shadow: 0 24px 70px rgba(5, 5, 5, 0.08);
 }
 
 .checkout-summary h2 {
+  max-width: 9ch;
+  margin: 0;
   color: var(--color-ink);
+  font-size: clamp(3.25rem, 7vw, 6.25rem);
+  line-height: 0.9;
+}
+
+.checkout-summary .contact-list {
+  gap: 0;
+}
+
+.checkout-summary .contact-list p {
+  grid-template-columns: minmax(7rem, 0.35fr) minmax(0, 1fr);
+  align-items: baseline;
+  gap: 1.25rem;
+  border-top-color: rgba(5, 5, 5, 0.14);
+}
+
+.checkout-summary .contact-list span,
+.checkout-summary .contact-list a {
+  color: rgba(5, 5, 5, 0.78);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 800;
+  line-height: 1.3;
 }
 
 .service-index {

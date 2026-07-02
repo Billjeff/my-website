@@ -1935,6 +1935,11 @@ blockquote p {
   line-height: 0.9;
 }
 
+.checkout-summary .section-kicker,
+.checkout-summary .contact-list strong {
+  color: #53610f;
+}
+
 .checkout-summary .contact-list {
   gap: 0;
 }

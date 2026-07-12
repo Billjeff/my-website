@@ -10,6 +10,7 @@ const logoUrl = `${siteUrl}/brand/rapid-scope-mark.png`;
 const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 const breadcrumbLabels = {
   '/about': 'About',
+  '/case-studies': 'Case Studies',
   '/contact': 'Contact',
   '/services': 'Services',
 };
@@ -247,6 +248,7 @@ export default function Layout({
             </div>
             <Link href="/website-audit" onClick={() => setMenuOpen(false)}>Audit</Link>
             <Link href="/web-design" onClick={() => setMenuOpen(false)}>Web Design</Link>
+            <Link href="/case-studies" onClick={() => setMenuOpen(false)}>Case Studies</Link>
             <Link href="/contact" className="btn btn-primary" onClick={() => setMenuOpen(false)}>Get a Quote</Link>
           </div>
         </div>

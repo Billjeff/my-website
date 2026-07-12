@@ -3,6 +3,12 @@ import Link from 'next/link';
 
 const caseStudies = [
   {
+    title: 'Page 2 to Page 1 for a Conference Room Audio Video E-Commerce Website',
+    href: '/case-studies/conference-room-av-ecommerce-seo',
+    tag: 'E-Commerce SEO',
+    desc: 'A large AV catalog improved average Google position from 17.2 to 6.0, grew impressions 21% year over year, and earned 15M+ impressions in 16 months.',
+  },
+  {
     title: 'Zero to 472 Page-1 Keywords for a Brand-New Caribbean Travel Site',
     href: '/case-studies/caribbean-travel-site-seo',
     tag: 'SEO',

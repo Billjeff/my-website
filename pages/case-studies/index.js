@@ -3,6 +3,12 @@ import Link from 'next/link';
 
 const caseStudies = [
   {
+    title: 'Conference Room AV: Page 2 to Page 1 of Google',
+    href: '/case-studies/conference-room-av-seo',
+    tag: 'SEO',
+    desc: "A multi-year engagement lifted Conference Room AV's average Google position from 17.2 to 6.0 and grew search impressions 21% year over year to 15M+ in 16 months.",
+  },
+  {
     title: 'Zero to 472 Page-1 Keywords for a Brand-New Caribbean Travel Site',
     href: '/case-studies/caribbean-travel-site-seo',
     tag: 'SEO',

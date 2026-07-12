@@ -3,6 +3,12 @@ import Link from 'next/link';
 
 const caseStudies = [
   {
+    title: 'Zero to 472 Page-1 Keywords for a Brand-New Caribbean Travel Site',
+    href: '/case-studies/caribbean-travel-site-seo',
+    tag: 'SEO',
+    desc: 'A new domain with no authority grew into 472 page-1 keywords, 275,380 impressions, and 345% organic click growth in 90 days.',
+  },
+  {
     title: '+623% Weekly Organic Clicks in 90 Days for a Brand-New Turks & Caicos Travel Site',
     href: '/case-studies/turks-and-caicos-resort-guide',
     tag: 'SEO',

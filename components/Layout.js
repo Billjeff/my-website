@@ -11,6 +11,10 @@ const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 const breadcrumbLabels = {
   '/about': 'About',
   '/case-studies': 'Case Studies',
+  '/case-studies/popup-outlets-seo': 'Popup Outlets',
+  '/case-studies/conference-room-av-seo': 'Conference Room AV',
+  '/case-studies/caribbean-travel-site-seo': 'Caribbean Travel Site',
+  '/case-studies/turks-and-caicos-resort-guide': 'Turks & Caicos Resort Guide',
   '/contact': 'Contact',
   '/services': 'Services',
 };
@@ -48,6 +52,14 @@ function buildBreadcrumbs({ canonicalPath, serviceName, title }) {
     return [
       { href: `${siteUrl}/`, name: 'Home' },
       { href: `${siteUrl}/services`, name: 'Services' },
+      current,
+    ];
+  }
+
+  if (canonicalPath.startsWith('/case-studies/')) {
+    return [
+      { href: `${siteUrl}/`, name: 'Home' },
+      { href: `${siteUrl}/case-studies`, name: 'Case Studies' },
       current,
     ];
   }

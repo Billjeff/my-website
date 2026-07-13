@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import RelatedServices from '@/components/RelatedServices';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -238,6 +239,22 @@ export default function PopUpOutletsCaseStudy() {
           <Link href="/contact" className="btn btn-accent">Claim Your Free Audit</Link>
         </div>
       </section>
+
+      <RelatedServices
+        intro="This result was built with the services below."
+        items={[
+          {
+            title: 'Monthly SEO Service',
+            href: '/monthly-seo',
+            desc: 'The ongoing campaign that holds page-1 rankings and keeps earning AI-search citations.',
+          },
+          {
+            title: 'High DA Cloud Link Stacking',
+            href: '/cloud-link-stacking',
+            desc: 'The authority layer that strengthens entity signals behind competitive rankings.',
+          },
+        ]}
+      />
     </Layout>
   );
 }

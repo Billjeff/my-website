@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import RelatedServices from '@/components/RelatedServices';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -211,6 +212,22 @@ export default function CaribbeanTravelSiteCaseStudy() {
           <Link href="/contact" className="btn btn-accent">Claim Your Free Audit</Link>
         </div>
       </section>
+
+      <RelatedServices
+        intro="This launch result was built with the services below."
+        items={[
+          {
+            title: 'Topical Map Service',
+            href: '/topical-map',
+            desc: 'The content architecture that grew a new domain to 472 page-1 keywords in 90 days.',
+          },
+          {
+            title: 'Monthly SEO Service',
+            href: '/monthly-seo',
+            desc: 'The ongoing execution that compounds a topical map into durable organic growth.',
+          },
+        ]}
+      />
     </Layout>
   );
 }

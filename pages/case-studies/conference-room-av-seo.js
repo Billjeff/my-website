@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import RelatedServices from '@/components/RelatedServices';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -208,6 +209,22 @@ export default function ConferenceRoomAVCaseStudy() {
           <Link href="/contact" className="btn btn-accent">Claim Your Free Audit</Link>
         </div>
       </section>
+
+      <RelatedServices
+        intro="This multi-year result was built with the services below."
+        items={[
+          {
+            title: 'Monthly SEO Service',
+            href: '/monthly-seo',
+            desc: 'The ongoing retainer that lifted average position from 17.2 to 6.0 over the engagement.',
+          },
+          {
+            title: 'Website Audit',
+            href: '/website-audit',
+            desc: 'The technical baseline and roadmap that a durable monthly campaign builds on.',
+          },
+        ]}
+      />
     </Layout>
   );
 }

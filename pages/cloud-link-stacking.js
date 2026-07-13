@@ -87,6 +87,9 @@ export default function CloudLinkStacking() {
             <p>
               Rapid Scope builds structured cloud authority assets that support important landing pages, strengthen entity signals, and give competitive SEO campaigns another layer of trust.
             </p>
+            <p>
+              See the payoff: a stronger authority layer helped <Link href="/case-studies/popup-outlets-seo">Popup Outlets own page 1 and AI search</Link>.
+            </p>
             <Link href="/contact" className="btn btn-primary">Request a Proposal</Link>
           </div>
         </div>

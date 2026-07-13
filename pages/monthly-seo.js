@@ -83,6 +83,9 @@ export default function MonthlySEO() {
             <p>
               A monthly SEO campaign gives your website consistent technical improvement, stronger content coverage, and the reporting discipline needed to keep momentum.
             </p>
+            <p>
+              See it in action: an ongoing retainer lifted <Link href="/case-studies/conference-room-av-seo">Conference Room AV from average position 17.2 to 6.0</Link>.
+            </p>
             <Link href="/contact" className="btn btn-primary">Start Your Monthly Plan</Link>
           </div>
         </div>

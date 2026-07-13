@@ -86,6 +86,9 @@ export default function WebDesign() {
             <p>
               Rapid Scope designs modern websites that pair sharp visual direction with technical SEO, mobile performance, and clear conversion paths.
             </p>
+            <p>
+              See what a search-ready build can do: a new site reached <Link href="/case-studies/turks-and-caicos-resort-guide">+623% weekly organic clicks in 90 days</Link>.
+            </p>
             <Link href="/contact" className="btn btn-primary">Get Your Design Quote</Link>
           </div>
         </div>

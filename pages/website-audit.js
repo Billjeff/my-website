@@ -100,6 +100,9 @@ export default function WebsiteAudit() {
             <p>
               Rapid Scope audits your website like a growth system: search access, content quality, performance, UX, and conversion paths all in one practical roadmap.
             </p>
+            <p>
+              See where it leads: an audit-first approach helped <Link href="/case-studies/popup-outlets-seo">Popup Outlets rank #1 and earn ChatGPT and Copilot citations</Link>.
+            </p>
             <Link href="/contact" className="btn btn-primary">Claim Your Free Initial Check</Link>
           </div>
         </div>

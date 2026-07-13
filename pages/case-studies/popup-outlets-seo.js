@@ -44,7 +44,7 @@ export default function PopUpOutletsCaseStudy() {
       canonicalPath="/case-studies/popup-outlets-seo"
       description="How Rapid Scope Marketing helped a US pop-up outlet brand rank #1 for its highest-value buying terms, land 210 keywords on page 1, and lift average Google position from 12.2 to 6.5."
       pageType="Article"
-      title="PopUpOutlets.com SEO Case Study | Owning Page 1 of Google | Rapid Scope Marketing"
+      title="Popup Outlets Brand SEO Case Study | Owning Page 1 of Google | Rapid Scope Marketing"
     >
       <section className="page-hero">
         <div className="container page-hero__grid">
@@ -95,7 +95,7 @@ export default function PopUpOutletsCaseStudy() {
           </div>
           <div className="copy-stack">
             <p>
-              PopUpOutlets.com is a US e-commerce brand selling pop-up power outlets for kitchen countertops, islands, and workspaces. When Rapid Scope Marketing began the engagement, it was a brand-new store competing for attention against national big-box retailers, marketplaces, and electrical manufacturers, all with far more authority.
+              This popup outlets brand is a US e-commerce brand selling pop-up power outlets for kitchen countertops, islands, and workspaces. When Rapid Scope Marketing began the engagement, it was a brand-new store competing for attention against national big-box retailers, marketplaces, and electrical manufacturers, all with far more authority.
             </p>
             <p>
               Two years of sustained SEO later, the brand ranks #1 on Google for the exact searches its buyers make: &quot;pop up outlets,&quot; &quot;countertop pop up outlet,&quot; &quot;pop up outlet for countertop,&quot; and &quot;pop up outlets for countertops.&quot; Its average position across the catalog climbed from 12.2, deep on page two, to 6.5 on page one, it now holds 210 page-one keywords, and its organic visibility is worth an estimated $20,700 a month in equivalent ad spend.
@@ -134,7 +134,7 @@ export default function PopUpOutletsCaseStudy() {
           </div>
           <div className="copy-stack">
             <p>
-              Rapid Scope set out to make PopUpOutlets.com the most relevant, most trusted result for every way a buyer might search for a pop-up outlet, and to build the authority needed to hold those positions against far larger competitors.
+              Rapid Scope set out to make the Popup Outlets Brand the most relevant, most trusted result for every way a buyer might search for a pop-up outlet, and to build the authority needed to hold those positions against far larger competitors.
             </p>
           </div>
           <div className="service-index">
@@ -199,7 +199,7 @@ export default function PopUpOutletsCaseStudy() {
           </div>
           <div className="copy-stack">
             <p>
-              Search is shifting from links to answers, and the same authority that wins Google&apos;s page one is now making the brand a source that AI answer engines cite directly. In Bing&apos;s AI performance data, the number of times Bing Copilot cited PopUpOutlets.com in an AI answer climbed to record highs in early July 2026: a peak of 153 citations in a single day, with the week of July 6 averaging roughly 120 a day, up from about 49 a day at the start of the year. On a strong day, AI answers now pull from as many as 15 different pages on the site.
+              Search is shifting from links to answers, and the same authority that wins Google&apos;s page one is now making the brand a source that AI answer engines cite directly. In Bing&apos;s AI performance data, the number of times Bing Copilot cited the Popup Outlets Brand in an AI answer climbed to record highs in early July 2026: a peak of 153 citations in a single day, with the week of July 6 averaging roughly 120 a day, up from about 49 a day at the start of the year. On a strong day, AI answers now pull from as many as 15 different pages on the site.
             </p>
           </div>
         </div>
@@ -213,7 +213,7 @@ export default function PopUpOutletsCaseStudy() {
           </figure>
           <div className="copy-stack">
             <p>
-              The pattern holds in ChatGPT. Asked for &quot;the best pop-up outlets for kitchen countertops and islands,&quot; ChatGPT (with live web search) named PopUpOutlets.com as the recommended place to buy, citing it more than any other retailer, across multiple product brands including Lew Electric, Hubbell, and Wiremold. In an AI-first search world, the brand isn&apos;t just ranking; it&apos;s the source the answer is built from.
+              The pattern holds in ChatGPT. Asked for &quot;the best pop-up outlets for kitchen countertops and islands,&quot; ChatGPT (with live web search) named the Popup Outlets Brand as the recommended place to buy, citing it more than any other retailer, across multiple product brands including Lew Electric, Hubbell, and Wiremold. In an AI-first search world, the brand isn&apos;t just ranking; it&apos;s the source the answer is built from.
             </p>
             <p>
               <em>

@@ -3,6 +3,12 @@ import Link from 'next/link';
 
 const caseStudies = [
   {
+    title: 'PopUpOutlets.com: Owning Page 1 of Google (and AI Search)',
+    href: '/case-studies/popup-outlets-seo',
+    tag: 'SEO',
+    desc: 'A specialist e-commerce brand ranks #1 for its top buying searches, holds 210 page-1 keywords, and is now cited directly by Bing Copilot and ChatGPT.',
+  },
+  {
     title: 'Conference Room AV: Page 2 to Page 1 of Google',
     href: '/case-studies/conference-room-av-seo',
     tag: 'SEO',

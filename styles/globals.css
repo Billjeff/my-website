@@ -2456,3 +2456,34 @@ blockquote p {
     transition-duration: 0.01ms !important;
   }
 }
+.monthly-seo-page .page-hero h1 { max-width: 15ch; font-size: 3rem; overflow-wrap: normal; }
+.monthly-seo-page section[id], .monthly-deliverable[id] { scroll-margin-top: 7rem; }
+.monthly-seo-page a:not(.btn) { text-decoration: underline; text-underline-offset: 0.2em; }
+.monthly-text-link { color: #ffffff; }
+.monthly-contents { padding: 1.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.18); }
+.monthly-contents ul { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; list-style: none; padding: 0; margin: 0; }
+.monthly-contents a { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.9rem; color: #ffffff; }
+.monthly-deliverables, .monthly-guide-grid { display: grid; grid-template-columns: minmax(0,1fr); gap: 2.5rem; }
+.monthly-deliverable { border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1.5rem; min-width: 0; }
+.monthly-deliverable h3 { margin: 1rem 0; }
+.monthly-deliverable p, .monthly-guide-grid p { max-width: 70ch; color: rgba(255,255,255,0.8); }
+.monthly-note { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.2); }
+.monthly-package h3 { margin: 0 0 1rem; }
+.monthly-package .btn { margin-top: auto; }
+.monthly-guide-section:nth-of-type(even) { background: #111111; }
+.monthly-section-link { margin-top: 2rem; }
+.monthly-evidence { display: grid; grid-template-columns: minmax(0,1fr); gap: 2rem; align-items: start; }
+.monthly-evidence figure { margin: 0; min-width: 0; }
+.monthly-evidence img { width: 100%; height: auto; border-radius: 8px; }
+.monthly-evidence figcaption { margin-top: 0.75rem; font-size: 0.85rem; color: #444444; }
+.monthly-evidence .copy-stack p { color: #444444; }
+.monthly-seo-page .faq-question h3 { margin: 0; font-size: 1.1rem; color: inherit; }
+.monthly-seo-page summary { cursor: pointer; min-height: 44px; }
+.monthly-faq-answer { padding: 0 1.5rem 1.5rem; }
+.monthly-faq-answer p { color: rgba(255,255,255,0.8); }
+.monthly-seo-page a:focus-visible, .monthly-seo-page summary:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+@media (min-width: 800px) {
+  .monthly-seo-page .page-hero h1 { font-size: 4rem; }
+  .monthly-deliverables, .monthly-guide-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .monthly-evidence { grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); }
+}

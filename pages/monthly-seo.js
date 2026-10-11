@@ -1,182 +1,141 @@
 import Layout from '@/components/Layout';
+import MonthlySEOForm from '@/components/MonthlySEOForm';
 import RelatedServices from '@/components/RelatedServices';
-import ServiceDepth from '@/components/ServiceDepth';
+import { campaignSections, deliverables, faqs, packages } from '@/lib/monthly-seo-content';
+import Image from 'next/image';
 import Link from 'next/link';
 
-const deliverables = [
-  'Technical fixes and monitoring',
-  'Keyword and opportunity research',
-  'Content briefs and optimization',
-  'Internal linking improvements',
-  'Authority and backlink planning',
-  'Monthly reporting and roadmap updates',
-];
-
-const campaignSignals = [
-  'Technical issues are reviewed regularly instead of waiting for rankings to drop.',
-  'Content priorities are chosen from search demand, commercial intent, and gaps in the buyer journey.',
-  'Internal links, service pages, and authority signals improve together so progress compounds.',
-  'Reporting explains what changed, why it matters, and what should happen next.',
-];
-
-const faqs = [
-  {
-    q: 'What is included in a monthly SEO campaign?',
-    a: 'Monthly SEO can include technical fixes, content planning, page optimization, internal links, authority planning, reporting, and ongoing roadmap updates based on search demand and site performance.',
-  },
-  {
-    q: 'How long does monthly SEO take to show results?',
-    a: 'Technical improvements can help quickly, but durable organic growth usually compounds over several months depending on competition, website history, content depth, and implementation pace.',
-  },
-  {
-    q: 'Can monthly SEO include web design improvements?',
-    a: 'Yes. When conversion paths, mobile UX, service page structure, or site performance are limiting lead quality, Rapid Scope can include design and development improvements in the roadmap.',
-  },
-];
-
+const pageImage = {
+  src: '/case-studies/caribbean-travel/gsc-panel.png',
+  caption: 'Google Search Console evidence from the Caribbean travel SEO case study',
+};
 const relatedServices = [
-  {
-    title: 'Website Audit',
-    href: '/website-audit',
-    desc: 'Establish the baseline and priority roadmap before starting a monthly SEO campaign.',
-  },
-  {
-    title: 'Topical Map Service',
-    href: '/topical-map',
-    desc: 'Plan the content architecture that monthly SEO can build and improve over time.',
-  },
-  {
-    title: 'Web Design',
-    href: '/web-design',
-    desc: 'Improve templates, page experience, and conversion paths when SEO growth needs stronger UX support.',
-  },
+  { title: 'Website audit before monthly SEO', href: '/website-audit', desc: 'Establish the technical baseline and decide which fixes should lead your campaign.' },
+  { title: 'Topical map for SEO content planning', href: '/topical-map', desc: 'Connect keyword research, supporting content and your priority commercial pages.' },
+  { title: 'SEO consultation for campaign direction', href: '/seo-consultation', desc: 'Get specialist guidance when your internal team will carry out the implementation.' },
+  { title: 'Web design for stronger SEO conversion paths', href: '/web-design', desc: 'Scope template and usability improvements when visitors struggle to enquire.' },
 ];
-
-const depthParagraphs = [
-  'The first month should establish the baseline: technical issues, priority pages, tracking quality, Search Console signals, content gaps, and the conversion paths that matter most. That gives the campaign a clean order of operations instead of a scattered task list.',
-  'The second month usually moves into visible improvements: fixing high-impact technical issues, strengthening service pages, adding internal links, refining metadata, and preparing content briefs that match search demand and buyer intent.',
-  'By the third month, the campaign should be compounding. Reporting should show what changed, what was learned, which pages need more support, and where the next technical, content, design, or authority improvements should focus.',
-  'This rhythm keeps the campaign honest. If rankings improve but enquiries do not, the roadmap can shift toward conversion paths, service page clarity, or lead quality. If pages are indexed but not moving, the next step may be better content depth, stronger internal links, or clearer topical coverage.',
-  'Rapid Scope treats monthly SEO as an operating cadence for the website. The aim is to keep useful improvements shipping, measure what matters, and avoid long gaps where competitors publish, technical issues grow, and promising pages lose momentum.',
-  'The monthly plan also gives stakeholders a cleaner way to make decisions. Instead of guessing whether to publish, redesign, build links, or fix technical issues, the roadmap shows what has the strongest connection to search visibility, buyer trust, and qualified enquiries right now.',
-  'That makes the campaign easier to sustain. The work can adapt as rankings, leads, competitors, and business priorities change, while still keeping the website moving in one direction: clearer pages, stronger authority, better technical health, and more useful organic traffic.',
-  'The result is steady progress instead of reactive SEO.',
+const contents = [
+  ['deliverables', 'Monthly SEO service deliverables'],
+  ['packages', 'SEO packages and scope'],
+  ...campaignSections.map(({ id, title }) => [id, title]),
+  ['case-studies', 'SEO campaign evidence'],
+  ['faq', 'Monthly SEO service questions'],
+  ['monthly-quote', 'Request a monthly SEO plan'],
 ];
 
 export default function MonthlySEO() {
   return (
     <Layout
       canonicalPath="/monthly-seo"
-      description="Monthly SEO services in Dubai with technical fixes, content planning, internal linking, authority planning and transparent roadmap updates."
-      faqs={faqs}
-      pageType="WebPage"
+      title="Monthly SEO Service & Packages in Dubai | Rapid Scope Marketing"
+      description="Monthly SEO service in Dubai, UAE. Explore SEO packages with technical SEO, content, internal linking and reporting. Get a scoped plan from Rapid Scope Marketing."
       serviceName="Monthly SEO Service"
-      title="Monthly SEO Service Dubai | Rapid Scope Marketing"
+      serviceCatalog={deliverables}
+      pageImage={pageImage}
+      faqs={faqs}
     >
-      <section className="page-hero">
-        <div className="container page-hero__grid">
-          <div>
-            <p className="hero-eyebrow">Ongoing SEO</p>
-            <h1>Organic growth that compounds month after month.</h1>
-          </div>
-          <div className="page-hero__copy">
-            <p>
-              A monthly SEO campaign gives your website consistent technical improvement, stronger content coverage, and the reporting discipline needed to keep momentum.
-            </p>
-            <Link href="/contact" className="btn btn-primary">Start Your Monthly Plan</Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container section-heading">
-          <p className="section-kicker">Every month</p>
-          <h2>The work stays focused on impact.</h2>
-        </div>
-        <div className="container three-card-grid">
-          {deliverables.map((item, index) => (
-            <article className="card" key={item}>
-              <span className="card-number">{String(index + 1).padStart(2, '0')}</span>
-              <h3>{item}</h3>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section results-section">
-        <div className="container results-section__grid">
-          <div className="results-metric">
-            <span>Campaign rhythm</span>
-            <strong>Audit. Build. Measure. Improve.</strong>
-          </div>
-          <div>
-            <p className="section-kicker">Why monthly matters</p>
-            <h2>SEO is a living system, not a one-off task.</h2>
-            <p>
-              Search demand changes, competitors publish, technical issues appear, and buyer expectations move. Monthly SEO keeps your site improving instead of drifting.
-            </p>
-            <div className="outcome-list">
-              <span>Clear monthly priorities</span>
-              <span>Consistent content progress</span>
-              <span>Technical debt reduction</span>
-              <span>Transparent reporting</span>
+      <div className="monthly-seo-page">
+        <section className="page-hero">
+          <div className="container page-hero__grid">
+            <div><p className="hero-eyebrow">Dubai &amp; UAE / Ongoing SEO</p><h1>Monthly SEO service for sustained organic growth.</h1></div>
+            <div className="page-hero__copy">
+              <p>Turn your website into a clearer route to qualified enquiries. Rapid Scope connects technical improvements, useful content and transparent reporting in a monthly SEO plan built around your business.</p>
+              <Link className="btn btn-primary" href="#monthly-quote">Request Your Monthly SEO Plan</Link>
+              <Link className="monthly-text-link" href="#packages">Compare monthly SEO package scopes</Link>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="section audit-section">
-        <div className="container audit-section__grid">
-          <div>
-            <p className="section-kicker">Campaign signals</p>
-            <h2>Monthly SEO works when the improvements stay connected.</h2>
-            <p>
-              Search growth is rarely one lever. Technical access, content quality, internal links, page experience, authority, and reporting all influence whether the right customers can find and trust your website.
-            </p>
-            <Link href="/website-audit" className="btn btn-ghost">Start With an Audit</Link>
+        </section>
+        <nav className="monthly-contents" aria-label="On this page">
+          <div className="container"><ul>{contents.map(([id, title]) => <li key={id}><a href={`#${id}`}>{title}</a></li>)}</ul></div>
+        </nav>
+        <section className="section">
+          <div className="container editorial-grid">
+            <div><p className="section-kicker">A connected campaign</p><h2>Monthly SEO services that turn priorities into progress.</h2></div>
+            <div className="copy-stack">
+              <p>A website rarely stands still. Your competitors publish, products change and customer questions evolve. <strong>Monthly search engine optimization services</strong> give those changes a regular review and implementation cycle.</p>
+              <p>Rapid Scope works from a documented roadmap. We connect technical access, content coverage, internal links and conversion paths so each improvement has a purpose. You see what has been completed and what depends on approvals or development work.</p>
+              <p>Start with the service that fits your situation. A <Link href="/website-audit">website SEO audit</Link> diagnoses the baseline. A <Link href="/seo-consultation">monthly SEO consulting discussion</Link> can clarify priorities before an ongoing implementation plan.</p>
+              <p>The goal is useful organic traffic and a clearer buyer journey. We measure search performance alongside agreed business actions, then adjust the next month of work using evidence rather than a fixed list of tasks.</p>
+            </div>
           </div>
-          <div className="audit-list">
-            {campaignSignals.map((signal, index) => (
-              <div key={signal}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <strong>{signal}</strong>
+        </section>
+        <section className="section" id="deliverables">
+          <div className="container">
+            <div className="section-heading"><p className="section-kicker">What the work covers</p><h2>Monthly SEO service deliverables, explained.</h2><p>Your proposal defines the mix and volume of work. These are the connected areas we consider when building a campaign.</p></div>
+            <div className="monthly-deliverables">
+              {deliverables.map((item, index) => <article id={item.id} key={item.id} className="monthly-deliverable">
+                <span className="card-number">{String(index + 1).padStart(2, '0')}</span>
+                <h3>{item.title}</h3><p><strong>{item.summary}</strong></p>
+                {item.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                {item.id === 'internal-linking' && <p>Explore the <Link href="/topical-map">topical map service for your SEO content architecture</Link>.</p>}
+                {item.id === 'technical-seo' && <p>See the <Link href="/website-audit">technical SEO audit service</Link> for a standalone diagnosis.</p>}
+              </article>)}
+            </div>
+          </div>
+        </section>
+        <section className="section home-services" id="packages">
+          <div className="container">
+            <div className="section-heading"><p className="section-kicker">Agree the scope first</p><h2>Monthly SEO packages matched to your website.</h2><p>These are scope examples, not fixed-price products. Your quote depends on the website, goals and implementation needs.</p></div>
+            <div className="three-card-grid">
+              {packages.map((item) => <article className="light-card monthly-package" key={item.title}>
+                <h3>{item.title}</h3><p><strong>{item.audience}</strong></p>
+                {item.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                <a className="btn btn-ghost" href="#monthly-quote">Request this scope</a>
+              </article>)}
+            </div>
+            <aside className="monthly-note"><p><strong>Need an audit before committing to monthly SEO?</strong> Compare the <Link href="/website-audit">website audit packages</Link> or discuss your priorities through our <Link href="/contact">contact page</Link>. Monthly pricing and commercial terms are agreed in the proposal.</p></aside>
+          </div>
+        </section>
+        {campaignSections.map((section) => <section className="section monthly-guide-section" key={section.id} id={section.id}>
+          <div className="container">
+            <div className="section-heading"><h2>{section.title}</h2><p>{section.intro}</p></div>
+            <div className="monthly-guide-grid">
+              {section.items.map((item) => <article className="copy-stack" key={item.title}><h3>{item.title}</h3>{item.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</article>)}
+            </div>
+            {section.id === 'first-90-days' && <p className="monthly-section-link">Build the content roadmap with our <Link href="/topical-map">topical map service</Link>.</p>}
+            {section.id === 'measurement' && <p className="monthly-section-link">When usability limits lead quality, explore <Link href="/web-design">web design and development for your SEO campaign</Link>.</p>}
+          </div>
+        </section>)}
+        <section className="section home-services" id="case-studies">
+          <div className="container">
+            <div className="section-heading"><p className="section-kicker">Evidence with context</p><h2>SEO case studies behind the campaign approach.</h2><p>Results belong to their individual projects and measurement periods. They illustrate the work; they do not predict the outcome of your monthly SEO service.</p></div>
+            <div className="monthly-evidence">
+              <figure><Image src={pageImage.src} alt={pageImage.caption} width={1917} height={1095} sizes="(max-width: 800px) 100vw, 60vw" /><figcaption>Source: Rapid Scope&apos;s documented Caribbean travel SEO case study.</figcaption></figure>
+              <div className="copy-stack">
+                <h3>A new travel website with a connected SEO foundation</h3>
+                <p>The Caribbean travel project combined topical structure, intent-matched pages and ongoing improvements. Its published case study records 472 page-one keywords and 275,380 impressions during the reported quarter.</p>
+                <p><Link href="/case-studies/caribbean-travel-site-seo">Read the Caribbean travel SEO case study</Link> for the starting point, work and measurement context.</p>
+                <p>A large product catalog has different priorities. The <Link href="/case-studies/conference-room-av-ecommerce-seo">conference room audio video e-commerce SEO case study</Link> documents improvements to visibility across an established catalog.</p>
+                <p>Explore all <Link href="/case-studies">Rapid Scope SEO case studies</Link> and <Link href="/about">learn about the agency</Link> before discussing your campaign.</p>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
-
-      <ServiceDepth
-        kicker="First 90 days"
-        title="A monthly campaign needs rhythm before it needs volume."
-        paragraphs={depthParagraphs}
-      />
-
-      <RelatedServices
-        intro="Monthly SEO compounds fastest when technical foundations, content architecture, and conversion paths are aligned."
-        items={relatedServices}
-      />
-
-      <section className="section faq-section">
-        <div className="container faq-section__grid">
-          <div>
-            <p className="section-kicker">Monthly SEO FAQ</p>
-            <h2>Questions before you commit to ongoing work.</h2>
+        </section>
+        <section className="section" id="resources">
+          <div className="container editorial-grid">
+            <div><p className="section-kicker">Understand the evidence</p><h2>Official guidance for SEO measurement and implementation.</h2></div>
+            <div className="copy-stack">
+              <p>Read Google&apos;s <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide">SEO Starter Guide</a> for the foundations of useful, accessible website content.</p>
+              <p>The <a href="https://support.google.com/webmasters/answer/7576553">Search Console performance report guide</a> explains clicks, impressions and average position. These metrics should be interpreted together rather than treated as interchangeable results.</p>
+              <p>Google&apos;s <a href="https://developers.google.com/search/docs/appearance/structured-data/sd-policies">structured data guidelines</a> explain why markup must reflect real page content. Our monthly SEO service follows that principle when describing services and FAQs.</p>
+            </div>
           </div>
-          <div className="faq-list">
-            {faqs.map((faq) => (
-              <div className="faq-item faq-item--open" key={faq.q}>
-                <div className="faq-question">
-                  <span>{faq.q}</span>
-                </div>
-                <div className="faq-answer">
-                  <p>{faq.a}</p>
-                </div>
-              </div>
-            ))}
+        </section>
+        <RelatedServices items={relatedServices} intro="Choose a standalone SEO service or connect it to an ongoing campaign with a clear scope." />
+        <section className="section faq-section" id="faq">
+          <div className="container faq-section__grid">
+            <div><p className="section-kicker">Monthly SEO FAQ</p><h2>Monthly SEO service questions before you commit.</h2></div>
+            <div className="faq-list">{faqs.map((faq) => <details className="faq-item" key={faq.q}><summary className="faq-question"><h3>{faq.q}</h3></summary><div className="monthly-faq-answer"><p>{faq.a}</p></div></details>)}</div>
           </div>
-        </div>
-      </section>
+        </section>
+        <section className="section" id="monthly-quote">
+          <div className="container cta-split">
+            <div className="copy-stack"><p className="section-kicker">Your next step</p><h2>Request a monthly SEO plan with a clear scope.</h2><p>Tell us your website, priority services and business goals. We will review the starting point and recommend an appropriate campaign scope.</p><p>Prefer to speak directly? <a href="tel:+971566456855">Call +971 566456855</a> or <a href="mailto:bilal@rapidscopemarketing.com">email Rapid Scope</a>.</p><p>Rapid Scope Marketing LLC is based in Dubai Internet City, UAE. Your proposal will explain deliverables, pricing, responsibilities and any work outside the monthly SEO plan.</p></div>
+            <div className="audit-form-card"><MonthlySEOForm /></div>
+          </div>
+        </section>
+      </div>
     </Layout>
   );
 }

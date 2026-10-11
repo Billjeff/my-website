@@ -58,7 +58,7 @@ function buildBreadcrumbs({ canonicalPath, serviceName, title }) {
   ];
 }
 
-function buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, serviceName, title }) {
+function buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, serviceName, title, serviceCatalog, pageImage }) {
   const graph = [
     {
       '@type': ['Organization', 'LocalBusiness'],
@@ -117,7 +117,39 @@ function buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, s
         { '@type': 'Country', name: 'United Arab Emirates' },
       ],
       url: canonicalUrl,
+      ...(serviceCatalog.length ? {
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: `${serviceName} deliverables`,
+          itemListElement: serviceCatalog.map((item) => ({
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: item.title,
+              description: item.summary,
+              url: `${canonicalUrl}#${item.id}`,
+            },
+          })),
+        },
+      } : {}),
     });
+  }
+
+  if (pageImage) {
+    const imageId = `${canonicalUrl}#primaryimage`;
+    graph[2].primaryImageOfPage = { '@id': imageId };
+    graph.push({
+      '@type': 'ImageObject',
+      '@id': imageId,
+      contentUrl: absoluteUrl(pageImage.src),
+      url: absoluteUrl(pageImage.src),
+      caption: pageImage.caption,
+    });
+  }
+
+  if (serviceName && serviceCatalog.length) {
+    graph[2].mainEntity = { '@id': `${canonicalUrl}#service` };
+    graph[0].legalName = siteName;
   }
 
   if (pageType === 'ContactPage') {
@@ -171,12 +203,15 @@ export default function Layout({
   faqs = [],
   pageType = 'WebPage',
   serviceName = '',
+  serviceCatalog = [],
+  pageImage = null,
   title = 'Rapid Scope Marketing LLC | Dubai SEO Agency',
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const canonicalUrl = absoluteUrl(canonicalPath);
   const breadcrumbs = buildBreadcrumbs({ canonicalPath, serviceName, title });
-  const schema = buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, serviceName, title });
+  const schema = buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, serviceName, title, serviceCatalog, pageImage });
+  const socialImage = pageImage ? absoluteUrl(pageImage.src) : logoUrl;
 
   return (
     <>
@@ -186,6 +221,7 @@ export default function Layout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href={canonicalUrl} />
         <link rel="icon" href="/brand/rapid-scope-favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/brand/rapid-scope-favicon.png" />
         {googleSiteVerification ? (
           <meta name="google-site-verification" content={googleSiteVerification} />
         ) : null}
@@ -194,11 +230,12 @@ export default function Layout({
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content={logoUrl} />
+        <meta property="og:image" content={socialImage} />
+        {pageImage && <meta property="og:image:alt" content={pageImage.caption} />}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={logoUrl} />
+        <meta name="twitter:image" content={socialImage} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

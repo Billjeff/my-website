@@ -70,7 +70,7 @@ function buildBreadcrumbs({ canonicalPath, serviceName, title }) {
   ];
 }
 
-function buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, serviceName, title, serviceCatalog, pageImage }) {
+function buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, serviceName, title, serviceCatalog, pageImage, keywords }) {
   const graph = [
     {
       '@type': ['Organization', 'LocalBusiness'],
@@ -112,6 +112,7 @@ function buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, s
       name: title,
       description,
       isPartOf: { '@id': `${siteUrl}/#website` },
+      ...(keywords.length ? { keywords: keywords.join(', ') } : {}),
       about: { '@id': `${siteUrl}/#organization` },
       inLanguage: 'en',
     },
@@ -217,12 +218,14 @@ export default function Layout({
   serviceName = '',
   serviceCatalog = [],
   pageImage = null,
+  keywords = [],
+  robots = null,
   title = 'Rapid Scope Marketing LLC | Dubai SEO Agency',
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const canonicalUrl = absoluteUrl(canonicalPath);
   const breadcrumbs = buildBreadcrumbs({ canonicalPath, serviceName, title });
-  const schema = buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, serviceName, title, serviceCatalog, pageImage });
+  const schema = buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, serviceName, title, serviceCatalog, pageImage, keywords });
   const socialImage = pageImage ? absoluteUrl(pageImage.src) : logoUrl;
 
   return (
@@ -230,6 +233,7 @@ export default function Layout({
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
+        {robots && <meta name="robots" content={robots} />}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href={canonicalUrl} />
         <link rel="icon" href="/brand/rapid-scope-favicon.png" type="image/png" />

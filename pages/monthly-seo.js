@@ -2,6 +2,7 @@ import Layout from '@/components/Layout';
 import MonthlySEOForm from '@/components/MonthlySEOForm';
 import RelatedServices from '@/components/RelatedServices';
 import { campaignSections, deliverables, faqs, packages } from '@/lib/monthly-seo-content';
+import { monthlySeoImagery } from '@/lib/monthly-seo-imagery';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -24,12 +25,23 @@ const contents = [
   ['monthly-quote', 'Request a monthly SEO plan'],
 ];
 
+function MonthlyPhoto({ sectionId, wide = false }) {
+  const photo = monthlySeoImagery[sectionId];
+  if (!photo) return null;
+  return <figure className={`monthly-photo${wide ? ' monthly-photo--wide' : ''}`}>
+    <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} sizes={wide ? '(max-width: 800px) 100vw, 1200px' : '(max-width: 800px) 100vw, 600px'} />
+    <figcaption>Illustrative photo: <a href={photo.source}>{photo.photographer} / Pexels</a></figcaption>
+  </figure>;
+}
+
 export default function MonthlySEO() {
   return (
     <Layout
       canonicalPath="/monthly-seo"
-      title="Monthly SEO Service & Packages in Dubai | Rapid Scope Marketing"
-      description="Monthly SEO service in Dubai, UAE. Explore SEO packages with technical SEO, content, internal linking and reporting. Get a scoped plan from Rapid Scope Marketing."
+      title="Monthly SEO Services & Packages Dubai | Rapid Scope Marketing"
+      description="Monthly SEO services in Dubai, UAE: technical SEO, keyword research, content, local SEO and reporting. Compare monthly SEO packages and request a scoped growth plan from Rapid Scope Marketing."
+      keywords={['monthly SEO services', 'monthly SEO management', 'technical SEO', 'keyword research', 'local SEO', 'Google Search Console', 'Dubai', 'United Arab Emirates']}
+      robots="index, follow, max-image-preview:large"
       serviceName="Monthly SEO Service"
       serviceCatalog={deliverables}
       pageImage={pageImage}
@@ -38,7 +50,7 @@ export default function MonthlySEO() {
       <div className="monthly-seo-page">
         <section className="page-hero">
           <div className="container page-hero__grid">
-            <div><p className="hero-eyebrow">Dubai &amp; UAE / Ongoing SEO</p><h1>Monthly SEO service for sustained organic growth.</h1></div>
+            <div><p className="hero-eyebrow">Dubai &amp; UAE / Ongoing SEO</p><h1>Monthly SEO services for sustained organic growth.</h1></div>
             <div className="page-hero__copy">
               <p>Turn your website into a clearer route to qualified enquiries. Rapid Scope connects technical improvements, useful content and transparent reporting in a monthly SEO plan built around your business.</p>
               <Link className="btn btn-primary" href="#monthly-quote">Request Your Monthly SEO Plan</Link>
@@ -63,11 +75,12 @@ export default function MonthlySEO() {
         </section>
         <section className="section" id="deliverables">
           <div className="container">
-            <div className="section-heading"><p className="section-kicker">What the work covers</p><h2>Monthly SEO service deliverables, explained.</h2><p>Your proposal defines the mix and volume of work. These are the connected areas we consider when building a campaign.</p></div>
+            <div className="section-heading"><p className="section-kicker">What the work covers</p><h2>What do monthly SEO services include?</h2><p>Your proposal defines the mix and volume of work. These are the connected areas we consider when building a campaign.</p></div>
             <div className="monthly-deliverables">
               {deliverables.map((item, index) => <article id={item.id} key={item.id} className="monthly-deliverable">
                 <span className="card-number">{String(index + 1).padStart(2, '0')}</span>
                 <h3>{item.title}</h3><p><strong>{item.summary}</strong></p>
+                <MonthlyPhoto sectionId={item.id} />
                 {item.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                 {item.id === 'internal-linking' && <p>Explore the <Link href="/topical-map">topical map service for your SEO content architecture</Link>.</p>}
                 {item.id === 'technical-seo' && <p>See the <Link href="/website-audit">technical SEO audit service</Link> for a standalone diagnosis.</p>}
@@ -77,7 +90,7 @@ export default function MonthlySEO() {
         </section>
         <section className="section home-services" id="packages">
           <div className="container">
-            <div className="section-heading"><p className="section-kicker">Agree the scope first</p><h2>Monthly SEO packages matched to your website.</h2><p>These are scope examples, not fixed-price products. Your quote depends on the website, goals and implementation needs.</p></div>
+            <div className="section-heading"><p className="section-kicker">Agree the scope first</p><h2>Which monthly SEO packages fit your website and budget?</h2><p>These are scope examples, not fixed-price products. Your quote depends on the website, goals and implementation needs.</p></div>
             <div className="three-card-grid">
               {packages.map((item) => <article className="light-card monthly-package" key={item.title}>
                 <h3>{item.title}</h3><p><strong>{item.audience}</strong></p>
@@ -91,6 +104,7 @@ export default function MonthlySEO() {
         {campaignSections.map((section) => <section className="section monthly-guide-section" key={section.id} id={section.id}>
           <div className="container">
             <div className="section-heading"><h2>{section.title}</h2><p>{section.intro}</p></div>
+            <MonthlyPhoto sectionId={section.id} wide />
             <div className="monthly-guide-grid">
               {section.items.map((item) => <article className="copy-stack" key={item.title}><h3>{item.title}</h3>{item.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</article>)}
             </div>
@@ -111,6 +125,10 @@ export default function MonthlySEO() {
                 <p>Explore all <Link href="/case-studies">Rapid Scope SEO case studies</Link> and <Link href="/about">learn about the agency</Link> before discussing your campaign.</p>
               </div>
             </div>
+            <div className="monthly-evidence monthly-evidence--additional">
+              <figure><Image src="/case-studies/conference-room-av/dashboard.png" alt="Search performance dashboard from the Conference Room Audio Video E-Commerce Website SEO case study" width={1977} height={1035} sizes="(max-width: 800px) 100vw, 60vw" /><figcaption>Published campaign evidence; read the case study for dates and context.</figcaption></figure>
+              <div className="copy-stack"><h3>Monthly SEO services for an established e-commerce catalog</h3><p>Product discovery needs more than a home-page ranking. Category architecture, crawlability, indexing and useful buying content help connect a large catalog to relevant searches.</p><p>See the starting position, implementation and measurement period in our <Link href="/case-studies/conference-room-av-ecommerce-seo">Conference Room Audio Video E-Commerce Website case study</Link>. For a different retail context, explore the <Link href="/case-studies/popup-outlets-seo">Popup Outlets SEO campaign</Link>. These are project examples, not promised results for a new monthly plan.</p></div>
+            </div>
           </div>
         </section>
         <section className="section" id="resources">
@@ -126,7 +144,7 @@ export default function MonthlySEO() {
         <RelatedServices items={relatedServices} intro="Choose a standalone SEO service or connect it to an ongoing campaign with a clear scope." />
         <section className="section faq-section" id="faq">
           <div className="container faq-section__grid">
-            <div><p className="section-kicker">Monthly SEO FAQ</p><h2>Monthly SEO service questions before you commit.</h2></div>
+            <div><p className="section-kicker">Frequently asked questions</p><h2>Monthly SEO services: frequently asked questions.</h2></div>
             <div className="faq-list">{faqs.map((faq) => <details className="faq-item" key={faq.q}><summary className="faq-question"><h3>{faq.q}</h3></summary><div className="monthly-faq-answer"><p>{faq.a}</p></div></details>)}</div>
           </div>
         </section>

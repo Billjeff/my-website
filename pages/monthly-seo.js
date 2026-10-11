@@ -43,6 +43,7 @@ export default function MonthlySEO() {
               <p>Turn your website into a clearer route to qualified enquiries. Rapid Scope connects technical improvements, useful content and transparent reporting in a monthly SEO plan built around your business.</p>
               <Link className="btn btn-primary" href="#monthly-quote">Request Your Monthly SEO Plan</Link>
               <Link className="monthly-text-link" href="#packages">Compare monthly SEO package scopes</Link>
+              <p>See an ongoing campaign in action: the <Link href="/case-studies/conference-room-av-ecommerce-seo">conference room audio video e-commerce website improved average position from 17.2 to 6.0</Link>.</p>
             </div>
           </div>
         </section>

@@ -6,6 +6,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/case-studies/conference-room-av-seo',
+        destination: '/case-studies/conference-room-av-ecommerce-seo',
+        permanent: true,
+      },
+      {
         source: '/:path*',
         has: [
           {

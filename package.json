@@ -16,5 +16,9 @@
   "devDependencies": {
     "eslint": "^9",
     "eslint-config-next": "16.2.6"
+  },
+  "overrides": {
+    "js-yaml": "^4.3.0",
+    "postcss": "^8.5.19"
   }
 }

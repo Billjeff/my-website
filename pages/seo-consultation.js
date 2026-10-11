@@ -89,6 +89,9 @@ export default function SEOConsultation() {
             <p>
               A focused consultation gives you direct guidance on what to fix, what to build, and which opportunities are most likely to move the needle.
             </p>
+            <p>
+              See where the right strategy leads: <Link href="/case-studies/conference-room-av-seo">15M+ impressions in 16 months for Conference Room AV</Link>.
+            </p>
             <Link href="/contact" className="btn btn-primary">Book a Strategy Session</Link>
           </div>
         </div>

@@ -88,6 +88,9 @@ export default function TopicalMap() {
             <p>
               A topical map turns scattered keyword ideas into a structured content system that supports rankings, AI search visibility, and stronger buyer journeys.
             </p>
+            <p>
+              See it in action: a structured map grew a new domain to <Link href="/case-studies/caribbean-travel-site-seo">472 page-1 keywords in 90 days</Link>.
+            </p>
             <Link href="/contact" className="btn btn-primary">Request Your Map</Link>
           </div>
         </div>

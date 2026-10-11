@@ -311,6 +311,9 @@ export default function Home() {
             <p>
               We combine SEO strategy and modern web design so your site can perform across organic search, AI Overviews, local discovery, and conversion-focused landing pages.
             </p>
+            <p>
+              Prefer proof over promises? See real Google Search Console results in our <Link href="/case-studies">SEO case studies</Link>.
+            </p>
           </div>
         </div>
       </section>

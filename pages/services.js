@@ -18,6 +18,11 @@ const services = [
     desc: 'Semantic content architecture that builds topical authority and helps search engines understand your expertise.',
   },
   {
+    title: 'White Label SEO',
+    href: '/white-label-seo',
+    desc: 'Agency delivery support for SEO audits, content, technical priorities and reporting under an agreed scope.',
+  },
+  {
     title: 'SEO Consultation',
     href: '/seo-consultation',
     desc: 'Focused strategy sessions for businesses that need clarity before investing in a full campaign.',

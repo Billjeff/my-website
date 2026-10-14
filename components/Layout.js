@@ -23,6 +23,7 @@ const servicesDropdown = [
   { href: '/website-audit', label: 'Website Audit Service' },
   { href: '/topical-map', label: 'Topical Map Service' },
   { href: '/monthly-seo', label: 'Monthly SEO Service' },
+  { href: '/white-label-seo', label: 'White Label SEO' },
   { href: '/seo-consultation', label: 'SEO Consultation' },
   { href: '/web-design', label: 'Web Design & Development' },
 ];
@@ -70,7 +71,7 @@ function buildBreadcrumbs({ canonicalPath, serviceName, title }) {
   ];
 }
 
-function buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, serviceName, title, serviceCatalog, pageImage, keywords }) {
+function buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, serviceName, title, serviceCatalog, pageImage, keywords, serviceContactPath, datePublished }) {
   const graph = [
     {
       '@type': ['Organization', 'LocalBusiness'],
@@ -112,6 +113,7 @@ function buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, s
       name: title,
       description,
       isPartOf: { '@id': `${siteUrl}/#website` },
+      ...(datePublished ? { datePublished } : {}),
       ...(keywords.length ? { keywords: keywords.join(', ') } : {}),
       about: { '@id': `${siteUrl}/#organization` },
       inLanguage: 'en',
@@ -130,6 +132,12 @@ function buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, s
         { '@type': 'Country', name: 'United Arab Emirates' },
       ],
       url: canonicalUrl,
+      mainEntityOfPage: { '@id': `${canonicalUrl}#webpage` },
+      ...(serviceContactPath ? { potentialAction: {
+        '@type': 'CommunicateAction',
+        name: 'Request an agency SEO scope',
+        target: { '@type': 'EntryPoint', urlTemplate: absoluteUrl(serviceContactPath), actionPlatform: ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform'] },
+      } } : {}),
       ...(serviceCatalog.length ? {
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
@@ -155,6 +163,7 @@ function buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, s
       '@type': 'ImageObject',
       '@id': imageId,
       contentUrl: absoluteUrl(pageImage.src),
+      thumbnailUrl: absoluteUrl(pageImage.src),
       url: absoluteUrl(pageImage.src),
       caption: pageImage.caption,
     });
@@ -220,12 +229,14 @@ export default function Layout({
   pageImage = null,
   keywords = [],
   robots = null,
+  serviceContactPath = '',
+  datePublished = null,
   title = 'Rapid Scope Marketing LLC | Dubai SEO Agency',
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const canonicalUrl = absoluteUrl(canonicalPath);
   const breadcrumbs = buildBreadcrumbs({ canonicalPath, serviceName, title });
-  const schema = buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, serviceName, title, serviceCatalog, pageImage, keywords });
+  const schema = buildSchema({ breadcrumbs, canonicalUrl, description, faqs, pageType, serviceName, title, serviceCatalog, pageImage, keywords, serviceContactPath, datePublished });
   const socialImage = pageImage ? absoluteUrl(pageImage.src) : logoUrl;
 
   return (
